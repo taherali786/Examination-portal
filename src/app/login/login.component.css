@@ -1,0 +1,24 @@
+.modal{
+    animation-name: taher;
+    animation-duration: 0.8s;
+}
+@keyframes taher{     
+  0%{
+      transform: translateY(-150px);
+  }
+  20%{
+    transform: translateY(0px);
+  }
+  40%{
+    transform: translateY(-20px);
+  }
+  60%{
+    transform: translateY(0px);
+  }
+  80%{
+    transform: translateY(-10px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,84 @@
+ .one{
+     width:100%;
+     background-color: chartreuse;
+ }
+ .one .nav{
+     width:100%;
+ }
+ .one .nav li{
+    display: inline-block;
+    box-sizing: border-box;
+    padding-left: 3%;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom:2%;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 550;
+    list-style: none;
+    /* border: 1px solid firebrick; */
+    text-align: center;
+ }
+ .nav:hover li{
+     opacity: 0.2;
+ }
+.nav li:hover{
+    opacity: 1;
+}
+.navi{   
+    height: 50px;
+    width: 8%;
+}
+ .navi .navis{
+     display: block;
+      padding-left:0%;
+    
+ }
+ .navi .navis li{
+    display: none;
+    padding-left: 0%;
+   
+}
+ .navi:hover .navis li{
+     display: block;
+     color: chocolate;
+ }
+
+ .one .toggle{
+     width: 100%;
+     height: 30%;
+     background-color: teal;
+     text-align: right;
+     color: white;
+     font-size: 30px;
+     padding-bottom: 3%;
+     padding-right: 1%;
+     cursor: pointer;
+     display: none;
+ }
+
+ @media (max-width:768px){
+     .one .toggle{
+         display: block;
+     }
+    .nav{
+        width:100%;
+        /* height: 80%;
+        content: "hii"; */
+        display: none;
+    }
+    .nav li{
+        width: 100%;
+        display: block;
+        text-align: center;
+        transition: 1s;
+    }
+    .nav .navi .navis{
+        box-sizing: border-box;
+       width: 100%;
+    }
+    .actives{
+        display:block;
+    }
+ }
