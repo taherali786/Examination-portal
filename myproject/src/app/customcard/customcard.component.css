@@ -1,0 +1,58 @@
+.modal{
+    /* height: 480px; */
+    width:100%;
+    height: 100%;
+    position: relative;
+      animation-name: taher;
+      animation-duration: 0.8s;
+  }
+  .log-btn{
+    margin-right: 3px;
+  }
+   .modal-body{
+    width:100%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    /* position: abolute; */
+  }
+  
+  .modal-body .form-body{
+    position: absolute;
+    /* top:180px; */
+    width: 100%;
+    height: 100%;
+    transition:0.5s;
+    
+  }
+   #teacher{
+     position: absolute;
+    left:10px;
+    width:60%;
+  }
+  #student{
+    /* top:-100px; */
+    position: absolute;
+    left:650px;
+    width:60%;
+  } 
+  @keyframes taher{     
+    0%{
+        transform: translateY(-150px);
+    }
+    20%{
+      transform: translateY(0px);
+    }
+    40%{
+      transform: translateY(-20px);
+    }
+    60%{
+      transform: translateY(0px);
+    }
+    80%{
+      transform: translateY(-10px);
+    }
+    100%{
+      transform: translateY(0px);
+    }
+  }
