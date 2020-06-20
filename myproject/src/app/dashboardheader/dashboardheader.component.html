@@ -1,0 +1,23 @@
+<div class="ones">
+    <div class="toggles">
+        <div id="menus" onclick="myfunc()">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        
+    </div>
+    <ul id="myflex" class="navi">
+        <li class ="navlinks" routerLink="/dashboard/">home</li>
+       <li class ="navlinks" routerLink="/dashboard/about">About</li>
+       <li class ="navlinks" routerLink="/dashboard/contact">Contact</li>
+       <li class ="navlinks" routerLink="/dashboard/createtest" >Create Test
+            <!-- <ul class="navis">
+                <li class="naviss" class ="navlink" routerLink="/js">javascript</li>
+                <li class="naviss" class ="navlink" routerLink="/html">HTML</li>
+                <li class="naviss" class ="navlink" routerLink="/css">CSS</li>
+            </ul> -->
+       </li>
+       <li class ="navlinks" routerLink="/dashboard/jointest">Join Test</li>   
+       <li class ="navlinks" (click)="logout()" >Logout</li>
+    </ul>
+</div>
+ 

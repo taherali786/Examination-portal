@@ -17,6 +17,12 @@ import { CssComponent } from './css/css.component';
 import { CreatetestComponent } from './createtest/createtest.component';
 import { JointestComponent } from './jointest/jointest.component';
 import { CustomcardComponent } from './customcard/customcard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardheaderComponent } from './dashboardheader/dashboardheader.component';
+import { WebsiteComponent } from './website/website.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +40,17 @@ import { CustomcardComponent } from './customcard/customcard.component';
     CssComponent,
     CreatetestComponent,
     JointestComponent,
-    CustomcardComponent
+    CustomcardComponent,
+    DashboardComponent,
+    DashboardheaderComponent,
+    WebsiteComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

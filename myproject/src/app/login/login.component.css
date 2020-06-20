@@ -1,25 +1,33 @@
 .modal{
   /* height: 480px; */
-  width:100%;
+  /* width:100%;
   height: 100%;
-  position: relative;
+  position: absolute; */
     animation-name: taher;
     animation-duration: 0.8s;
 }
+/* #btn-color{
+  background-image: linear-gradient(#a770ef,#cf8bf3,#fdb99b);
+}
+#btn-color1{
+  background-image:none;
+}
 .log-btn{
   margin-right: 3px;
+  outline: none;
+  border-radius: 20px;
 }
  .modal-body{
   width:100%;
   height: 450px;
   position: relative;
   overflow: hidden;
-  /* position: abolute; */
+  
 }
 
 .modal-body .form-body{
   position: absolute;
-  /* top:180px; */
+ 
   width: 100%;
   height: 100%;
   transition:0.5s;
@@ -31,11 +39,11 @@
   width:60%;
 }
 #student{
-  /* top:-100px; */
+ 
   position: absolute;
   left:650px;
   width:60%;
-} 
+}  */
 @keyframes taher{     
   0%{
       transform: translateY(-150px);
