@@ -47,7 +47,7 @@ app.get('/user', (req, res)=>{
 
 
 app.post('/sign-in', bodyParser.json() ,(req,res)=>{
-
+                console.log(req.body);
         var collection = connection.db(dbName).collection('userauth');
 
         collection.find(req.body).toArray((err,docs)=>{
@@ -65,7 +65,7 @@ app.post('/sign-in', bodyParser.json() ,(req,res)=>{
 
 app.post('/sign-up', bodyParser.json() ,(req,res)=>{
 
-    var collection = connection.db(dbName).collection('userauth');
+ var collection = connection.db(dbName).collection('userauth');
 
 collection.find({email:req.body.email}).toArray((err,docs)=>{
     if(!err && docs.length>0)
@@ -87,20 +87,23 @@ collection.find({email:req.body.email}).toArray((err,docs)=>{
     }
 })
 
+app.post('/sign-In',bodyParser.json(),(req,res)=>{
+    console.log(req.body);
+    var  collection = connection.db(dbName).collection('subnameqbank');
+    //console.log(collection);
+    collection.insert(req.body,(err,result)=>{
+        if(!err){
 
-   
-   
-   
-   
-   
-   
-   
+            res.send({status:"ok",data:"insert successfull"});
+
+        }else{
+            res.send({status:"failed",data:err});
+        }
+    })
+})
 
 
 
-
-
-    
     
 })
     

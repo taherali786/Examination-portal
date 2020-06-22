@@ -31,7 +31,7 @@
     outline: none;
  }
  .nav:hover .navlink{
-     opacity: 0.2;
+     opacity: 0.5;
  }
 .nav .navlink:hover{
     opacity: 1;

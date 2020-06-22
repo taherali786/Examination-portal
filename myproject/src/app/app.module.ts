@@ -23,6 +23,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardheaderComponent } from './dashboardheader/dashboardheader.component';
 import { WebsiteComponent } from './website/website.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CreateqbankComponent } from './createqbank/createqbank.component';
+import { ShowresultComponent } from './showresult/showresult.component';
+import { AddpartComponent } from './addpart/addpart.component';
+import { Dashboard2Component } from './dashboard2/dashboard2.component';
+import { Dashboard2headerComponent } from './dashboard2header/dashboard2header.component';
+import { ShowqbankComponent } from './showqbank/showqbank.component';
+import { AddnewqueComponent } from './addnewque/addnewque.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +51,14 @@ import { LogoutComponent } from './logout/logout.component';
     DashboardComponent,
     DashboardheaderComponent,
     WebsiteComponent,
-    LogoutComponent
+    LogoutComponent,
+    CreateqbankComponent,
+    ShowresultComponent,
+    AddpartComponent,
+    Dashboard2Component,
+    Dashboard2headerComponent,
+    ShowqbankComponent,
+    AddnewqueComponent
   ],
   imports: [
     BrowserModule,

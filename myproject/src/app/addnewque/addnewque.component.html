@@ -1,0 +1,87 @@
+<div class="container-fluid">
+                
+    <!-- <div class="row row1">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-7 row2"> -->
+            <div class="row rows">
+                <!-- <div class="headline">
+                   <div class="one" id="one">Step1</div>
+                   <div class="one" id="two">Step2</div>
+                   <div class="one" id="three">Step3</div>
+                </div> -->
+                <div class="column " id="stepone">
+                    <h1>Step 1</h1>
+                    <form action="/action_page.php" #f="ngForm">
+                        <div class="form-group">
+                            <label for="subname">Subject Id:</label>
+                            <input #subnameref="ngModel" [(ngModel)]="subnameProp" type="text" class="form-control" id="subname" placeholder="Enter Subject Name" name="subname" (keyup)="next()">
+                            </div>
+                            <!-- <div class="form-group">
+                            <label for="subcode">Subject Code:</label>
+                            <input #subcoderef="ngModel"  [(ngModel)]="subcodeProp" type="text" class="form-control" id="subcode" placeholder="Enter Subject Code (Optional)" name="subcode">
+                            </div>
+                            <div class="form-group">
+                            <label for="exm">Examiner Name:</label>
+                            <input #examineref="ngModel" [(ngModel)]="examinerProp" type="text" class="form-control" id="exm" placeholder="Enter Examiner Name" name="exm" (keyup)="next()">
+                            </div>
+                        -->
+                        <button *ngIf="isgood" type="submit" class="btn btn-primary ml-5 pl-4 pr-4" (click)="savesub()" >Next</button>
+                    </form>
+                </div>
+        <!-- <div class="col-sm-2"></div>
+        <div class="col-sm-4 "> -->
+                <div *ngIf="Hello" class="column" id="steptwo">
+                    <div class="row rows2">
+                        <div class="col-sm-8 column1">
+                            <div class="form-group">
+                                <label for="Question"><h4>Enter Question Here:</h4></label>
+                                <textarea class="form-control" rows="5" id="Question"></textarea>
+                            </div>
+                            <div *ngIf="ismcq" class="form1 mb-5 mt-3 form-control-lg">
+                                <a (click)="add()" class="btn btn-primary ">Add New Field</a><br><br>
+                                <!-- <div class="row rows3"> -->
+                                    <div class="form-inline form-control-sm">
+                                         <!-- <div class="col-sm-2">                                       -->
+                                            <input type="text">
+                                        <!-- </div> -->
+                                    </div>
+                                <!-- </div> -->
+                                
+                            </div><br>
+                            <div *ngIf="istruefalse" class="form2 form-control-lg">
+                                <label class="radio-inline mr-4 "><input type="radio" name="optradio" value="true" class="mr-2" checked>True</label>
+                                <label class="radio-inline mr-4"><input type="radio" name="optradio" value="false" class="mr-2">False</label>
+                            </div><br>
+                            <div class="form3 mt-1">
+                                <button type="submit" class="btn btn-primary pl-4 pr-4 ml-2 mt-1">Back</button>
+                                <button type="submit" class="btn btn-primary pl-4 pr-4 ml-4 mr-1 mt-1">Save & Add New Question</button>
+                                <button type="submit" class="btn btn-primary pl-4 pr-4 ml-4 mt-1">Save &  End</button><br>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4 column2">
+                            <label><h5 class="mt-3">Select Question Type</h5></label>
+                            <button type="submit" class="btn btn-primary pl-4 pr-4 mt-5" (click)="showtruefalse()">True/False</button><br>
+                            <button type="submit" class="btn btn-primary pl-5 pr-5 mt-5" (click)="showmcq()">MCQ</button><br>               
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+        </div>
+    </div>
+</div>
+</div> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+                    

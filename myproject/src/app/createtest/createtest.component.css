@@ -1,0 +1,82 @@
+.container-fluid{
+    width:100%;
+    height:737px;
+    background-image: linear-gradient(#00c3ff,#c0c0aa);
+    padding-top: 8%;
+}
+.container-fluid .rows{
+    width:500px;
+    height: 450px;
+    background-color: white;
+    /* margin-left:120px; */
+    margin:0 auto;
+    border-radius:22px;
+    box-shadow: 10px 10px 10px  black;
+}
+
+.rows .column{
+   position: relative;
+   top:40px;
+   left: 100px;
+ 
+}
+
+#savesteptwo{
+    left: 350px;
+}
+#savestepthree{
+    left: 650px;
+}
+.form-group{
+    width:300px;
+}
+.form-group .btn-savesteptwo{
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 50px;
+}
+.form-group .btn-sst2{
+    margin-left: 27px;
+}
+.form-group .or-savesteptwo{
+    margin-left: 100px;
+}
+.form-group .txt-savesteptwo{
+    margin-left: 5px;
+}
+.form-group .txt-sst{
+    margin-left: 30px;
+}
+.rows .headline{
+    width:300px;
+    height:35px;
+    position: absolute;
+   margin-left: 110px;
+   /* background-color: tomato; */
+   display: grid;
+   grid-template-columns:auto auto auto ;
+   grid-gap:1px;
+}
+.headline .one{
+    /* border: 2px solid black; */
+    padding-left: 27px;
+    padding-top: 4px;
+    margin-top: 3px;
+}
+#one{
+border-bottom: 7px solid gold;
+}
+/* .row .container{
+    
+} */
+/* .container-fluid .container{
+    margin-top: 2%;
+    height: 90%;
+    background-color: blue;
+    align-items: center;
+}
+.container-fluid .container .row{
+    
+    margin-top: 2%;
+
+} */

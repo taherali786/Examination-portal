@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+
 export class DataService {
 
   constructor(private http:HttpClient) { }
@@ -22,5 +23,10 @@ export class DataService {
 
   signin(d):any{
     return this.http.post('http://localhost:3000/sign-in',d);
+  }
+
+  savesub(d):any{
+    alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/sign-In',d);
   }
 }

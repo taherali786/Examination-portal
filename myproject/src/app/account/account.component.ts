@@ -16,6 +16,10 @@ export class AccountComponent implements OnInit {
   constructor(private router:Router,private ds:DataService) { }
 
   ngOnInit(): void {
+  
+  }
+
+  ngViewAfterInIt():void{
     document.getElementById('clickevent').click();
   }
     

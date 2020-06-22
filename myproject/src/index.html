@@ -28,7 +28,12 @@
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-       
+      $("#tableSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 
         
         
@@ -39,7 +44,13 @@
         }
 
         
-        function myfunc(){
+   function myfunc(){
+          
+          $('.navi').toggleClass('active');
+        $('.navlinks').toggleClass('navlink3');
+      }
+
+      function myfunc3(){
           
           $('.navi').toggleClass('active');
         $('.navlinks').toggleClass('navlink3');
@@ -53,7 +64,24 @@
     // }
     // var x=document.getElementById('teacher');
     // var y=document.getElementById('student');
+      function savestep1(){
+       // alert("hii");
+      $('#savestepone').css("left","-650px");
+      $('#savesteptwo').css("left","-50px");
+      $("#savestepthree").css("left","300px");
+      $('#savesteptwo').css("transition","1.1s");
+      $('#savestepone').css("transition","1.1s");
+      $('#one').css("border-bottom","0px");
+      $('#two').css("border-bottom","7px solid gold");
+       
+      }
 
+      function step1(){
+        $('#stepone').css("left","-400px");
+        $('#steptwo').css("left","-340px");
+        $('#stepone').css("transition","1s");
+        $('#steptwo').css("transition","1s");
+      }
     // function studentfunc(){
     //   // x.style.left="-400px";
     //   // y.style.left="10px";

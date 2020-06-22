@@ -23,27 +23,38 @@ export class LoginComponent implements OnInit {
     this.ds.signin({email:this.emailProp})
     .subscribe((response)=>{
       if(response.status=="ok"){
-      
-      localStorage.setItem("name",response.data[0].name);
-      localStorage.setItem("email",response.data[0].email);
 
-        alert("you are login");
+        const modals=document.getElementsByClassName('modal');
+        for(let i=0;i<modals.length;i++){
+          modals[i].classList.remove('show');
+          modals[i].setAttribute('aria-hidden','true');
+          modals[i].setAttribute('style','display:none');
+ 
+        }
         
-       const modals=document.getElementsByClassName('modal');
-       for(let i=0;i<modals.length;i++){
-         modals[i].classList.remove('show');
-         modals[i].setAttribute('aria-hidden','true');
-         modals[i].setAttribute('style','display:none');
+        const modalsBackdrops=document.getElementsByClassName('modal-backdrop');
+ 
+        for(let i=0;i<modalsBackdrops.length;i++){
+          document.body.removeChild(modalsBackdrops[i]);
+        }
 
-       }
-       
-       const modalsBackdrops=document.getElementsByClassName('modal-backdrop');
-
-       for(let i=0;i<modalsBackdrops.length;i++){
-         document.body.removeChild(modalsBackdrops[i]);
-       }
-
-      this.router.navigate(['/dashboard']);
+      if(response.data[0].role=="teacher"){
+        //alert(response.data[0]._id);
+        localStorage.setItem("id",response.data[0]._id);
+        localStorage.setItem("name",response.data[0].name);
+        localStorage.setItem("email",response.data[0].email);
+        localStorage.setItem("role",response.data[0].role);
+        alert("you are login");
+        this.router.navigate(['/dashboard']);
+      }else{
+        localStorage.setItem("id",response.data[0]._id);
+        localStorage.setItem("name",response.data[0].name);
+        localStorage.setItem("email",response.data[0].email);
+        localStorage.setItem("role",response.data[0].role);
+        alert("you are login");
+        this.router.navigate(['/dashboard2']);
+      }
+      
   
       }else{
         alert(response.err);
