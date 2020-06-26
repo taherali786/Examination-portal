@@ -25,8 +25,49 @@ export class DataService {
     return this.http.post('http://localhost:3000/sign-in',d);
   }
 
-  savesub(d):any{
+  savesubject(d):any{
     alert(JSON.stringify(d));
-    return this.http.post('http://localhost:3000/sign-In',d);
+    return this.http.post('http://localhost:3000/save-subjectinfo',d);
+  }
+
+  saveque(d):any{
+    // alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/save-question',d);
+  }
+
+  savesubmitlast(d):any{
+    // alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/save-submitlast',d);
+  }
+
+  savetst(d):any
+  {
+    // alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/save-test',d);
+  }
+  
+  openfile(d):any{
+    console.log(d);
+    return this.http.post('http://localhost:3000/open-file',d);
+  }
+
+  showquestion(d):any{
+    console.log(d);
+    // alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/show-question',d);
+  }
+
+  savepaper(d):any{
+    alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/save-paper',d);
+  }
+
+  savepaperlst(d):any{
+    alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/save-paper-last',d);
   }
 }
+

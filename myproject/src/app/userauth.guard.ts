@@ -21,7 +21,7 @@ export class UserauthGuard implements CanActivate {
       }
       else{
         alert("dont be smart... ");
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         return false;
       }
 

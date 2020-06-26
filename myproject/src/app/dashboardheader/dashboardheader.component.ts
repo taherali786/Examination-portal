@@ -16,7 +16,7 @@ export class DashboardheaderComponent implements OnInit {
   logout()
   {
     localStorage.removeItem("email");
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
     

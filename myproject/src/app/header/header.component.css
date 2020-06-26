@@ -54,22 +54,9 @@
      .one .toggle{
          display: block;
      }
-    /* #myflex{
-        display: none;
-    } */
     .nav{
         display: none;
     }
-    /* .one .navig .nav{
-        display: flex;
-        width: 100%;
-    }
-    .one .navig .nav li{
-        width: 100%;
-        display: block;
-        text-align: center;
-        transition: 1s;
-    } */
     .actives{
         display:flex;
         flex-wrap: wrap;

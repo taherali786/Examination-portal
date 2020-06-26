@@ -19,24 +19,25 @@ import { AddpartComponent } from './addpart/addpart.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { ShowqbankComponent } from './showqbank/showqbank.component';
 import { AddnewqueComponent } from './addnewque/addnewque.component';
+import { ShowdetailComponent } from './showdetail/showdetail.component';
 
 
 const routes: Routes = [
   {path:'',component:WebsiteComponent,children:[
-    {path:'addnewque',component:AddnewqueComponent},
-    {path:'createqbank',component:CreateqbankComponent},
     {path:'',component:HomeComponent},
     {path:'header',component:HeaderComponent},
     {path:'about',component:AboutComponent},
     {path:'contact',component:ContactComponent},
     {path:'login',component:LoginComponent},
     {path:'account',component:AccountComponent},
-    {path:'createtest',component:CreatetestComponent},
     {path:'jointest',component:JointestComponent}
   ]},
   {path:'dashboard',component:DashboardComponent,canActivate:[UserauthGuard], children:[
     {path:'',component:CreatetestComponent},
+    {path:'addnewque',component:AddnewqueComponent},
+    {path:'showdetail',component:ShowdetailComponent},
     {path:'createqbank',component:CreateqbankComponent},
+    {path:'createtest',component:CreatetestComponent},
     {path:'showresult',component:ShowresultComponent},
     {path:'addpart',component:AddpartComponent}
   ]},

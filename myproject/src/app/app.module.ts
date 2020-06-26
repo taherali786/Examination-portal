@@ -30,6 +30,7 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { Dashboard2headerComponent } from './dashboard2header/dashboard2header.component';
 import { ShowqbankComponent } from './showqbank/showqbank.component';
 import { AddnewqueComponent } from './addnewque/addnewque.component';
+import { ShowdetailComponent } from './showdetail/showdetail.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { AddnewqueComponent } from './addnewque/addnewque.component';
     Dashboard2Component,
     Dashboard2headerComponent,
     ShowqbankComponent,
-    AddnewqueComponent
+    AddnewqueComponent,
+    ShowdetailComponent
   ],
   imports: [
     BrowserModule,

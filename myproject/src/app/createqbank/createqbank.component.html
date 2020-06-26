@@ -22,7 +22,8 @@
                             </tr>
                         </table>
                     </div>
-                    <button type="submit" class="btn btn-primary ml-5 pl-5 pr-5" (click)="goto()">Add New Subject Q Bank</button>  
+                    <button  *ngIf="isshow" type="submit" class="btn btn-primary" (click)="gotonew()">Add New Subject Q Bank</button>  
+                    <button  *ngIf="ishide2" type="submit" class="btn btn-primary" (click)="goto()">Add New Subject Q Bank</button>  
                 </div>
             </div>
         </div>
@@ -31,65 +32,22 @@
                     <input class="form-control mb-4" id="tableSearch" type="text"
                             placeholder="Type something to search list items">
                     </div>
-            <div class="table-responsive">
-                <table class="table table-striped">
+            <div class="table-responsive" >
+                <table class="table table-striped" *ngFor="let p of post">
                     <thead>
                     <tr>
                         <th>Subject Name</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th *ngIf="ishide2">Choose Question</th>
+                        <th *ngIf="isshow">Edit</th>
+                        <th *ngIf="isshow">Delete</th>
                     </tr>
                     </thead>
-                    <tbody id="myTable">
+                    <tbody id="myTable" >
                     <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td><button type="submit" class="btn btn-success pl-4 pr-4 ">Edit</button></td>
-                        <td><button type="submit" class="btn btn-danger ">Delete</button></td>
+                        <td>{{p.subname}}<input type="hidden" #subnameInput value="{{p.subname}}"></td>
+                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn btn-success">Edit</button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn btn-danger ">Delete</button></td>
                     </tr>
                     </tbody>
                 </table>
