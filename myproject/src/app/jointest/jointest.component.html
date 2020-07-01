@@ -1,1 +1,32 @@
-<p>jointest works!</p>
+<div class="container-fluid">
+    <div class="row rows">
+        <div class="col-sm-12 column">
+            <div class="heading">ONGOING TESTS</div>
+                    <div class="search">
+                    <input class="form-control mb-4" id="tableSearch" type="text"
+                            placeholder="Type something to search list items">
+                    </div>
+            <div class="table-responsive" >
+                <table class="table table-striped" >
+                    <thead>
+                    <tr>
+                        <th>Subject Name</th>
+                        <th>Examiner Name</th>
+                        <th *ngIf="ishide2">Choose Question</th>
+                        <th *ngIf="isshow">Click TO Start Test</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    <tr *ngFor="let p of post">
+                        <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p._id}}"></td>
+                        <td>{{p.examiner}}</td>
+                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value)">Go on</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>

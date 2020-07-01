@@ -3,15 +3,14 @@
     <!-- <div class="row row1">
         <div class="col-sm-5"></div>
         <div class="col-sm-7 row2"> -->
+            <!-- <countdown #countdown [config]="{leftTime:i,format:'mm:ss'}" (event)="onTimer($event)"></countdown> -->
             <div class="row1">
                 <div class="headline">
                    <div class="one" id="one1">Step1</div>
                    <div class="one" id="two">Step2</div>
-                   <div class="one" id="three">Step3</div>
                 </div>
                 <div class="rows">
-                    <div class="column " id="stepone">
-                        <h1>Step 1</h1>
+                    <div class="column mt-5" id="stepone">
                         <form #f="ngForm">
                             <div class="form-group">
                                 <label for="subname">Subject Id:</label>
@@ -42,7 +41,7 @@
                                     </div>
                                     <div *ngIf="ismcq" class="form1 row-box" id="mcqbox">
                                         <div>
-                                            Answer : <input type="text" #ansref="ngModel" [(ngModel)]="ansProp" class="mr-2" name="ansProp">
+                                            Answer :<input type="text" #ansref="ngModel" [(ngModel)]="ansProp" class="mr-2" name="ansProp">
                                             <button (click)="add()" class="btn btn-primary " [disabled]="ishide">Add New Field</button>
                                         </div> 
                                         <!-- <div class="row rows3"> -->

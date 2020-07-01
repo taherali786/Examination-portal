@@ -9,62 +9,62 @@
                                 </div> <div id="3step" onclick="savestep2()"></div>
                                 <div id="2step" onclick="savestep1()"></div>
                                 <div class="rows1">
-                                <div class="column" id="savestepone">
-                                    <!-- <h1>Step 1</h1> -->
-                                    <form action="/action_page.php" #f="ngForm">
-                                        <div class="form-group">
-                                            <label class="pt-5" for="subname">Subject Id:</label>
-                                            <input #subnameref="ngModel" [(ngModel)]="subnameProp" type="text" class="form-control" id="subname" placeholder="Enter Subject Name" name="subname" (keyup)="next()">
-                                            </div>
+                                    <div class="column" id="savestepone">
+                                        <!-- <h1>Step 1</h1> -->
+                                        <form action="/action_page.php" #f="ngForm">
                                             <div class="form-group">
-                                            <label for="subcode">Subject Code:</label>
-                                            <input #subcoderef="ngModel"  [(ngModel)]="subcodeProp" type="text" class="form-control" id="subcode" placeholder="Enter Subject Code (Optional)" name="subcode">
+                                                <label class="pt-5" for="subname">Subject Id:</label>
+                                                <input #subnameref="ngModel" [(ngModel)]="subnameProp" type="text" class="form-control" id="subname" placeholder="Enter Subject Name" name="subname" (keyup)="next()">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="subcode">Subject Code:</label>
+                                                <input #subcoderef="ngModel"  [(ngModel)]="subcodeProp" type="text" class="form-control" id="subcode" placeholder="Enter Subject Code (Optional)" name="subcode">
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="exm">Examiner Name:</label>
+                                                <input #examineref="ngModel" [(ngModel)]="examinerProp" type="text" class="form-control" id="exm" placeholder="Enter Examiner Name" name="exm" (keyup)="next()">
+                                                </div>
+                                        
+                                            <button *ngIf="isgood" type="submit" class="btn btn-primary ml-5 pl-4 pr-4"  (click)="savetest()">Next</button>
+                                        </form>
+                                    </div>
+                                
+                                    <div class="column" id="savesteptwo">
+                                        <!-- <h1>Step 2</h1> -->
+                                        <form action="/action_page.php">
+                                                <div class="form-group pt-5">
+                                                    <h6 class="txt-savesteptwo">Add Questions From Question Bank</h6>
+                                                    <button type="submit" class="btn btn-primary btn-savesteptwo btn-sst2" (click)="qbank()">Add Question</button>
+                                                </div>
+                                                <div class="form-group"><h4 class="or-savesteptwo">Or</h4></div>
+                                                <div class="form-group">                                                  
+                                                    <h6 class="txt-savesteptwo txt-sst">Add Question Manually</h6>
+                                                    <button type="submit" class="btn btn-primary btn-savesteptwo">Next</button>
+                                                </div>
+                                        </form>
+                                    </div>
+                                
+                                    <div class="column" id="savestepthree">
+                                        <form action="/action_page.php" class="pt-3" >
+                                            <label for="email" class="heading">PRIVACY SETTTING</label>
+                                            <div class="form-inline form-group">                                     
+                                                <label class="radio-inline mr-4 "><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="public" class="mr-2" checked>public</label>
+                                                <label class="radio-inline mr-4"><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="private" class="mr-2">private</label>
                                             </div>
-                                            <div class="form-group">
-                                            <label for="exm">Examiner Name:</label>
-                                            <input #examineref="ngModel" [(ngModel)]="examinerProp" type="text" class="form-control" id="exm" placeholder="Enter Examiner Name" name="exm" (keyup)="next()">
+                                            <label for="email" class="heading">RESULT SETTTING</label>
+                                            <div class="alert alert-success">How You Want To Show Answer</div>
+                                            <div class="form-inline form-group">                                     
+                                                <label class="radio-inline mr-4 "><input type="radio" name="resultProp" #resultref="ngModel" [(ngModel)]="resultProp" value="perquestion" class="mr-2" checked>At Every questions</label>
+                                                <label class="radio-inline mr-4"><input type="radio" name="resultProp" #resultref="ngModel" [(ngModel)]="resultProp" value="atlast" class="mr-2">At Last</label>
                                             </div>
-                                       
-                                        <button *ngIf="isgood" type="submit" class="btn btn-primary ml-5 pl-4 pr-4"  (click)="savetest()">Next</button>
-                                    </form>
-                                </div>
-                              
-                                <div class="column" id="savesteptwo">
-                                    <!-- <h1>Step 2</h1> -->
-                                    <form action="/action_page.php">
-                                            <div class="form-group pt-5">
-                                                <h6 class="txt-savesteptwo">Add Questions From Question Bank</h6>
-                                                <button type="submit" class="btn btn-primary btn-savesteptwo btn-sst2" (click)="qbank()">Add Question</button>
+                                            <label for="email" class="heading">TIMER SETTTING</label>
+                                            <div class="form-inline form-group">                                     
+                                                <label class="radio-inline mr-2"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeoneveryque" class="mr-2" checked>Every Question</label>
+                                                <label class="radio-inline"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeonwholeses" class="mr-2">Whole Session</label>
                                             </div>
-                                            <div class="form-group"><h4 class="or-savesteptwo">Or</h4></div>
-                                            <div class="form-group">                                                  
-                                                <h6 class="txt-savesteptwo txt-sst">Add Question Manually</h6>
-                                                <button type="submit" class="btn btn-primary btn-savesteptwo">Next</button>
-                                            </div>
-                                    </form>
-                                </div>
-                               
-                                <div class="column" id="savestepthree">
-                                    <form action="/action_page.php" class="pt-3" >
-                                        <label for="email" class="heading">PRIVACY SETTTING</label>
-                                        <div class="form-inline form-group">                                     
-                                            <label class="radio-inline mr-4 "><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="public" class="mr-2" checked>public</label>
-                                            <label class="radio-inline mr-4"><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="private" class="mr-2">private</label>
-                                        </div>
-                                        <label for="email" class="heading">RESULT SETTTING</label>
-                                        <div class="alert alert-success">How You Want To Show Answer</div>
-                                        <div class="form-inline form-group">                                     
-                                            <label class="radio-inline mr-4 "><input type="radio" name="resultProp" #resultref="ngModel" [(ngModel)]="resultProp" value="perquestion" class="mr-2" checked>At Every questions</label>
-                                            <label class="radio-inline mr-4"><input type="radio" name="resultProp" #resultref="ngModel" [(ngModel)]="resultProp" value="atlast" class="mr-2">At Last</label>
-                                        </div>
-                                        <label for="email" class="heading">TIMER SETTTING</label>
-                                        <div class="form-inline form-group">                                     
-                                            <label class="radio-inline mr-2"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeoneveryque" class="mr-2" checked>Every Question</label>
-                                            <label class="radio-inline"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeonwholeses" class="mr-2">Whole Session</label>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" (click)="savepaperlast()">Done</button>
-                                    </form>
+                                            <button type="submit" class="btn btn-primary" (click)="savepaperlast()">Done</button>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
+                             </div>
 </div>

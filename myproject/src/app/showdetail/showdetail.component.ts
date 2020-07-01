@@ -15,15 +15,22 @@ export class ShowdetailComponent implements OnInit {
   isedit=false;
   isdlt=false;
   select:any[]=[];
+  examiner;
+  uid;
   constructor(private route:ActivatedRoute,private ds:DataService,private router:Router) { }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((d)=>{
       this.subname=d.get('subname');
-      this.userid=d.get('id');
+      alert(this.subname);
+      this.examiner=d.get('examiner');
+      alert(this.examiner);
+      this.uid=d.get('uid');
+      alert(this.uid);
     })
     
-    this.ds.showquestion({userid:this.userid,subname:this.subname}).subscribe((response)=>{
+    if(this.examiner==null){
+    this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.subname}).subscribe((response)=>{
 
       if(response.status=="ok"){
         this.quesid=response.data[0].questionid;
@@ -31,6 +38,17 @@ export class ShowdetailComponent implements OnInit {
         alert(response.data);
       }
     })
+  }else{
+    this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.subname}).subscribe((response)=>{
+
+      if(response.status=="ok"){
+        this.quesid=response.data[0].questionid;
+      }else{
+        alert("Your Question Bank is Not Available We rediredting.. you to Question Bank Page ");
+        this.router.navigate(['/dashboard/createqbank']);
+      }
+    })
+  }
 
   }
 
@@ -52,14 +70,30 @@ export class ShowdetailComponent implements OnInit {
 
   choosed(){
     // alert(JSON.stringify(this.select));
-    this.ds.savepaper({paper:this.select,examsubject:localStorage.getItem("examsubject"),userid:localStorage.getItem("examteacher")}).subscribe((response)=>{
-      if(response.status=="ok"){
-        alert(JSON.stringify(response.data));
-        this.router.navigate(['/dashboard/createtest'],{queryParams:{isnext:"nextone"}});
-      }else{
-          alert(response.data);
-      }
-    })
+    if(this.examiner==null){
+        alert("inserr block");
+      this.ds.savepaper({paper:this.select,examsubject:localStorage.getItem("examsubject"),examiner:localStorage.getItem("examteacher"),userid:localStorage.getItem('id')}).subscribe((response)=>{
+        if(response.status=="ok"){
+          alert(JSON.stringify(response.data));
+          this.router.navigate(['/dashboard/createtest'],{queryParams:{isnext:"nextone"}});
+        }else{
+            alert(response.data);
+        }
+      })
+    }else{
+      alert("update block");
+      for(var i=0;i<this.select.length;i++){
+      this.ds.updatepaperlst({paper:this.select[i],examsubject:this.subname,userid:this.uid}).subscribe((response)=>{
+        if(response.status=="ok"){
+          alert(JSON.stringify(response.data));
+          this.router.navigate(['/dashboard/showpaperdetail'],{queryParams:{examsubject:this.subname,examiner:localStorage.getItem('subjectteacher')}});
+        }else{
+            alert(response.data);
+        }
+      })
+    }
+    }
+    
   }
 
 } 

@@ -3,11 +3,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-createqbank',
-  templateUrl: './createqbank.component.html',
-  styleUrls: ['./createqbank.component.css']
+  selector: 'app-showpaper',
+  templateUrl: './showpaper.component.html',
+  styleUrls: ['./showpaper.component.css']
 })
-export class CreateqbankComponent implements OnInit {
+export class ShowpaperComponent implements OnInit {
   ishide;
   ishide2=false;
   isshow=true;
@@ -17,6 +17,7 @@ export class CreateqbankComponent implements OnInit {
   constructor(private router:Router,private route:ActivatedRoute,private ds:DataService) { }
 
   ngOnInit(): void {
+
     this.route.queryParamMap.subscribe((d)=>{
       this.ishide=d.get("ishide");
     })
@@ -30,17 +31,19 @@ export class CreateqbankComponent implements OnInit {
       this.isshow=true;
     }
 
-      this.ds.openfile({userid:localStorage.getItem('id')}).subscribe((response)=>{
+      this.ds.openpaper({userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
             this.post=response.data;
-            this.number=this.post.length;
+           this.number=this.post.length;
+
         }else{
           // alert(response.data);
         }
       })
+
   }
 
-goto()
+  goto()
 {
   this.router.navigate(['/dashboard/addnewque'],{queryParams:{ishide:"true"}});
 }
@@ -49,15 +52,15 @@ gotonew()
   this.router.navigate(['/dashboard/addnewque']);
 }
 
-showtext(title:string)
+showtext(title:string,title2:string)
 {
     if(title!=""){
-     this.router.navigate(['/dashboard/showdetail'],{queryParams:{subname:title}});
+     this.router.navigate(['/dashboard/showdetail'],{queryParams:{examsubject:title,examiner:title2}});
     }else{
       alert("error");
     }
 }
-
+ 
 edittext(title:string,title2:string)
 {
   // console.log(title);
@@ -66,7 +69,7 @@ edittext(title:string,title2:string)
       // alert(title);
       console.log(title);
       console.log(title2);
-     this.router.navigate(['/dashboard/showqdetail'],{queryParams:{subname:title,examiner:title2}});
+     this.router.navigate(['/dashboard/showpaperdetail'],{queryParams:{examsubject:title,examiner:title2}});
     }else{
       alert("error");
     }
@@ -75,7 +78,7 @@ edittext(title:string,title2:string)
 dlttext(title:string,title2:string){
   console.log(title);
   console.log(title2);
-  this.ds.dltqbank({subname:title,examiner:title2,userid:localStorage.getItem('id')})
+  this.ds.dltext({examsubject:title,examiner:title2,userid:localStorage.getItem('id')})
   .subscribe((response)=>{
     if(response.status=="ok"){
         alert(response.data);
@@ -84,6 +87,5 @@ dlttext(title:string,title2:string){
     }
   })
 }
-
 
 }

@@ -1,6 +1,6 @@
 .ones{
     width:100%;
-   background-image: linear-gradient(#4568dc,#b06ab3);
+    background-image: linear-gradient(#f7b733,#fc4a1a);
     
 }
 .navi{
@@ -13,12 +13,8 @@
 .navlinks{
     width:150px;
     display: inline-block;
-   /*box-sizing: border-box;
-   padding-left: 3%; */
    cursor: pointer;
    text-align: center;
-   /* padding-top: 2%;
-   padding-bottom:2%; */
    text-transform: uppercase;
    text-decoration: none;
    font-weight: 550;
@@ -28,11 +24,11 @@
    margin-top: 20px;
    margin-bottom: 20px;
    height: 50%;
-   outline: none;
+   /* outline: none; */
 }
-.navi:hover .navlinks{
+/* .navi:hover .navlinks{
     opacity: 0.5;
-}
+} */
 .navi .navlinks:hover{
    opacity: 1;
    transform: scale(1.2);
@@ -40,8 +36,7 @@
 .ones .toggles{
     width: 100%;
     height: 30%;
-    /* background-color: teal; */
-    background-image: linear-gradient(#de6161,#2657eb);
+  background-image: linear-gradient(#de6161,#2657eb);
     text-align: right;
     color: white;
     font-size: 30px;
@@ -60,7 +55,7 @@
    .active{
        display:flex;
        flex-wrap: wrap;
-       /* width: 100%; */
+       
    }
    .navlink3{
        width: 100%;

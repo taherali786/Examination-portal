@@ -31,11 +31,3 @@
     position: sticky;
     top:0;
 }
-
-.rows .column{
-text-align: center;
-height:40px;
-background-color: black;
-color: white;
-line-height: 40px;
-}

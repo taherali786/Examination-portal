@@ -69,5 +69,71 @@ export class DataService {
     alert(JSON.stringify(d));
     return this.http.post('http://localhost:3000/save-paper-last',d);
   }
+
+  openpaper(d):any{
+    console.log(d);
+    return this.http.post('http://localhost:3000/open-paper',d);
+  }
+
+  showpaperdetail(d):any{
+    console.log(d);
+    // alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/show-paper-detail',d);
+  }
+
+  dltvalue(d):any{
+    console.log(d);
+    // alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/delete-paper-detail',d);
+  }
+
+  updatepaperlst(d):any{
+    alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/update-paper-last',d);
+  }
+
+  dltext(d):any{
+    alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/delete-paper',d);
+  }
+
+  openjoinpaper(d):any{
+    alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/open-join-paper',d);
+  }
+
+  jointestdetail(d):any{
+    alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/join-test-detail',d);
+  }
+
+  dltqbank(d):any{
+    alert(JSON.stringify(d));
+    console.log(d);
+    return this.http.post('http://localhost:3000/delete-q-bank',d);
+  }
+
+  showqdetail(d):any{
+    console.log(d);
+     alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/show-q-detail',d);
+  }
+
+  saveanswer(d):any{
+    console.log(d);
+     alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/save-answer',d);
+  }
+
+  showresult(d):any{
+    console.log(d);
+     alert(JSON.stringify(d));
+    return this.http.post('http://localhost:3000/show-result',d);
+  }
+
 }
 

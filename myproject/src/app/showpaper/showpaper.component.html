@@ -13,7 +13,7 @@
                                 <td style="text-transform: uppercase; font-weight: bold;">{{name}}</td>
                             </tr>
                             <tr>
-                                <th>Total Subject Added</th>
+                                <th>Total Paper Added</th>
                                 <td  style="text-transform: uppercase; font-weight: bold;">{{number}}</td>
                             </tr>
                             <tr>
@@ -22,8 +22,8 @@
                             </tr>
                         </table>
                     </div>
-                    <button  *ngIf="isshow" type="submit" class="btn btn-primary" (click)="gotonew()">Add New Subject Q Bank</button>  
-                    <button  *ngIf="ishide2" type="submit" class="btn btn-primary" (click)="goto()">Add New Subject Q Bank</button>  
+                    <button  *ngIf="isshow" type="submit" class="btn btn-primary" (click)="gotonew()">Add New Paper</button>  
+                    <button  *ngIf="ishide2" type="submit" class="btn btn-primary" (click)="goto()">Add New Paper</button>  
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                             placeholder="Type something to search list items">
                     </div>
             <div class="table-responsive" >
-                <table class="table table-striped" *ngFor="let p of post">
+                <table class="table table-striped" >
                     <thead>
                     <tr>
                         <th>Subject Name</th>
@@ -43,11 +43,11 @@
                     </tr>
                     </thead>
                     <tbody id="myTable" >
-                    <tr>
-                        <td>{{p.subname}}<input type="hidden" #subnameInput value="{{p.subname}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
-                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-success" (click)="edittext(subnameInput.value,examinerInput.value)">Edit</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-danger "  (click)="dlttext(subnameInput.value,examinerInput.value)">Delete</button></td>
+                    <tr *ngFor="let p of post">
+                        <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p.examsubject}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
+                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value,examinerInput.value)">Open</button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value,examinerInput.value)">Edit</button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn btn-danger" (click)="dlttext(subnameInput.value,examinerInput.value)">Delete</button></td>
                     </tr>
                     </tbody>
                 </table>

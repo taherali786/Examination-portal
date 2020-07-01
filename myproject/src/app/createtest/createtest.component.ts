@@ -49,7 +49,7 @@ timerProp;
 
     savetest()
     {
-      this.ds.savetst({subname:this.subnameProp,subcode:this.subcodeProp,examiner:this.examinerProp}).subscribe((response)=>{
+      this.ds.savetst({subname:this.subnameProp,subcode:this.subcodeProp,examiner:this.examinerProp,userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
           alert(JSON.stringify(response.data[0]));
           localStorage.setItem("examsubject",this.subnameProp);
@@ -63,7 +63,7 @@ timerProp;
     }
  
     savepaperlast(){
-      this.ds.savepaperlst({subname:localStorage.getItem("examsubject"),examiner:localStorage.getItem("examteacher"),resultsetting:this.resultProp,privacysetting:this.privacyProp,timersetting:this.timerProp}).subscribe((response)=>{
+      this.ds.savepaperlst({subname:localStorage.getItem("examsubject"),examiner:localStorage.getItem("examteacher"),resultsetting:this.resultProp,privacysetting:this.privacyProp,timersetting:this.timerProp,userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
             alert(response.data);
         }else{

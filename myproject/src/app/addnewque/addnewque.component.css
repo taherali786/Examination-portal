@@ -58,9 +58,10 @@ border-bottom: 7px solid gold;
 
 .container-fluid{
     width:100%;
-    height:737px;
-    /* background-image: linear-gradient(#00c3ff,#c0c0aa); */
+    height:657px;
+    background-image: linear-gradient(#00c3ff,#c0c0aa);
     padding-top: 8%;
+    margin-top: -17px;
 }
 .container-fluid .row1{
     width:530px;
@@ -80,7 +81,7 @@ border-bottom: 7px solid gold;
     grid-template-columns: 60px 60px 60px;
     grid-gap:2px;
     font-weight: 400;
-    padding-left: 30%;
+    padding-left: 35%;
     text-transform: uppercase;
 }
 .row1 .headline .one{
@@ -148,3 +149,7 @@ border-bottom: 7px solid gold;
     padding-left: 0px;
    
 }
+
+#one1{
+    border-bottom: 7px solid gold;
+    }

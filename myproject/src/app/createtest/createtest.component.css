@@ -1,24 +1,20 @@
 .container-fluid{
     width:100%;
-    height:737px;
+    height:657px;
     background-image: linear-gradient(#00c3ff,#c0c0aa);
     padding-top: 8%;
-    /* margin-top: -15px; */
+    margin-top: -17px;
 }
 .container-fluid .rows{
     width:500px;
     height: 450px;
     background-color: white;
-    /* margin-left:120px; */
     margin:0 auto;
     border-radius:22px;
     box-shadow: 10px 10px 10px  black;
     overflow: hidden;
-    
-    /* display */
 }
 .container-fluid .rows .rows1{
-    /* width:500px; */
     height: 90%;
     display:grid;
     grid-template-columns: 480px 480px 480px;
@@ -28,7 +24,6 @@
 .rows .rows1 .column{
     height: 92%;
    position: relative;
-    /* background-color: tomato; */
     overflow: auto;
     padding-left: 20%;
     padding-right: 5%;
@@ -68,15 +63,12 @@
 .rows .headline{
     width:300px;
     height:35px;
-    /* position: absolute; */
    margin-left: 110px;
-   /* background-color: tomato; */
    display: grid;
    grid-template-columns:auto auto auto ;
    grid-gap:1px;
 }
 .headline .one{
-    /* border: 2px solid black; */
     padding-left: 27px;
     padding-top: 4px;
     margin-top: 3px;
@@ -84,17 +76,3 @@
 #one{
 border-bottom: 7px solid gold;
 }
-/* .row .container{
-    
-} */
-/* .container-fluid .container{
-    margin-top: 2%;
-    height: 90%;
-    background-color: blue;
-    align-items: center;
-}
-.container-fluid .container .row{
-    
-    margin-top: 2%;
-
-} */

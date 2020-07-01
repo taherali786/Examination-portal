@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { ApiService } from '../api.service';
+import {CountdownModule} from 'ngx-countdown';
+import {CountdownComponent} from 'ngx-countdown';
 
 @Component({
   selector: 'app-addnewque',
@@ -29,6 +31,9 @@ ishide2;
 isshow=true;
 ishide3=false;
 quedata:any[]=[];
+// i=10;
+
+@ViewChild('countdown') counter:CountdownComponent;
   constructor(private router:Router,private ds:DataService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -68,9 +73,11 @@ quedata:any[]=[];
       this.queProp='';
     }
     else{
-      if(this.tfProp==''){
-        this.quedata.push({question:this.queProp,answer:this.ansProp,option:this.data,subname:localStorage.getItem('subjectname'),userid:localStorage.getItem('id')});
-        this.ds.saveque({questionid:this.quedata}).subscribe((response)=>{
+      if(this.tfProp==null || this.tfProp==''){
+        alert(JSON.stringify(this.data));
+        this.quedata.push({question:this.queProp,answer:this.ansProp,option:this.data});
+        alert(JSON.stringify(this.quedata));
+        this.ds.saveque({questionid:this.quedata,subname:localStorage.getItem('subjectname'),examiner:localStorage.getItem('subjectteacher'),userid:localStorage.getItem('id')}).subscribe((response)=>{
           if(response.status=="ok"){
             alert(response.data);
             this.queProp='';
@@ -78,6 +85,8 @@ quedata:any[]=[];
             this.data.push({id:"",
             option:""});
             this.data.length=0;
+            this.quedata=[];
+            alert(JSON.stringify(this.quedata));
             document.getElementById('tf').click();
           }else{
             alert(response.data);
@@ -85,13 +94,17 @@ quedata:any[]=[];
         })
       }
       else{
-        this.quedata=[{question:this.queProp,answer:this.ansProp,tf:this.tfProp,subname:localStorage.getItem('subjectname'),userid:localStorage.getItem('id')}]
-        this.ds.saveque({questionid:this.quedata}).subscribe((response)=>{
+        alert("hello");
+        this.quedata.push({question:this.queProp,answer:this.ansProp,tf:this.tfProp});
+        alert(JSON.stringify(this.quedata));
+        this.ds.saveque({questionid:this.quedata,subname:localStorage.getItem('subjectname'),examiner:localStorage.getItem('subjectteacher'),userid:localStorage.getItem('id')}).subscribe((response)=>{
           if(response.status=="ok"){
             alert(response.data );
             this.queProp='';
             this.ansProp='';
             this.tfProp='';
+            this.quedata=[];
+            alert(JSON.stringify(this.quedata));
             document.getElementById('mcq').click();
           }else{
             alert(response.data);
@@ -138,6 +151,7 @@ savesubjectinfor(){
 //alert(response.data);
       document.getElementById('nextstep').click();
       localStorage.setItem('subjectname',this.subnameProp);
+      localStorage.setItem('subjectteacher',this.examinerProp);
     }else{
       alert(response.data);
     }
@@ -146,21 +160,25 @@ savesubjectinfor(){
 }
 
 submitlast(){
-
+  alert("hii");
   if(this.ansProp==null || this.queProp==null){
     alert("answer or question are blank");
     this.ansProp='';
     this.queProp='';
   }
   else{
-    if(this.tfProp==''){
-      this.quedata.push({question:this.queProp,answer:this.ansProp,option:this.data,subname:localStorage.getItem('subjectname'),userid:localStorage.getItem('id')});
-      this.ds.savesubmitlast({questionid:this.quedata}).subscribe((response)=>{
+    if(this.tfProp==null || this.tfProp==''){
+      this.quedata.push({question:this.queProp,answer:this.ansProp,option:this.data});
+      this.ds.savesubmitlast({questionid:this.quedata,subname:localStorage.getItem('subjectname'),examiner:localStorage.getItem('subjectteacher'), userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
           alert(response.data);
           this.queProp='';
           this.ansProp='';
-          this.data=[];
+          this.data.push({id:"",
+            option:""});
+            this.data.length=0;
+            this.quedata=[];
+            alert(JSON.stringify(this.quedata));
           document.getElementById('tf').click();
           this.router.navigate(['/dashboard/createqbank'],{queryParams:{ishide:"true"}});
         }else{
@@ -169,13 +187,15 @@ submitlast(){
       })
     }
     else{
-      this.quedata=[{question:this.queProp,answer:this.ansProp,tf:this.tfProp,subname:localStorage.getItem('subjectname'),userid:localStorage.getItem('id')}]
-      this.ds.savesubmitlast({questionid:this.quedata}).subscribe((response)=>{
+      this.quedata.push({question:this.queProp,answer:this.ansProp,tf:this.tfProp});
+      this.ds.savesubmitlast({questionid:this.quedata,subname:localStorage.getItem('subjectname'),examiner:localStorage.getItem('subjectteacher'),userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
           alert(response.data );
           this.queProp='';
           this.ansProp='';
           this.tfProp='';
+          this.quedata=[];
+          alert(JSON.stringify(this.quedata));
           document.getElementById('mcq').click();
           this.router.navigate(['/dashboard/createqbank'],{queryParams:{ishide:"true"}});
         }else{
@@ -195,14 +215,18 @@ submitlast1(){
     this.queProp='';
   }
   else{
-    if(this.tfProp==''){
-      this.quedata.push({question:this.queProp,answer:this.ansProp,option:this.data,subname:localStorage.getItem('subjectname'),userid:localStorage.getItem('id')});
-      this.ds.savesubmitlast({questionid:this.quedata}).subscribe((response)=>{
+    if(this.tfProp==null || this.tfProp==''){
+      this.quedata.push({question:this.queProp,answer:this.ansProp,option:this.data});
+      this.ds.savesubmitlast({questionid:this.quedata,subname:localStorage.getItem('subjectname'),examiner:localStorage.getItem('subjectteacher'), userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
           alert(response.data);
           this.queProp='';
           this.ansProp='';
-          this.data=[];
+          this.data.push({id:"",
+            option:""});
+            this.data.length=0;
+            this.quedata=[];
+            alert(JSON.stringify(this.quedata));
           document.getElementById('tf').click();
           this.router.navigate(['/dashboard/createqbank']);
         }else{
@@ -211,13 +235,15 @@ submitlast1(){
       })
     }
     else{
-      this.quedata=[{question:this.queProp,answer:this.ansProp,tf:this.tfProp,subname:localStorage.getItem('subjectname'),userid:localStorage.getItem('id')}]
-      this.ds.savesubmitlast({questionid:this.quedata}).subscribe((response)=>{
+      this.quedata.push({question:this.queProp,answer:this.ansProp,tf:this.tfProp});
+      this.ds.savesubmitlast({questionid:this.quedata,subname:localStorage.getItem('subjectname'),examiner:localStorage.getItem('subjectteacher'),userid:localStorage.getItem('id')}).subscribe((response)=>{
         if(response.status=="ok"){
           alert(response.data );
           this.queProp='';
           this.ansProp='';
           this.tfProp='';
+          this.quedata=[];
+          alert(JSON.stringify(this.quedata));
           document.getElementById('mcq').click();
           this.router.navigate(['/dashboard/createqbank']);
         }else{
@@ -226,8 +252,6 @@ submitlast1(){
       })
     }
   }
-
-}
 
 }
 
@@ -260,3 +284,11 @@ submitlast1(){
           
   //         document.querySelector('.form-inline').appendChild(row);
   // }
+
+  // onTimer(e:Event){
+  //   if(e["action"]=="done"){
+  //     // console.log(this.counter);
+  //     setTimeout(()=>this.counter.restart());
+  //   }
+  // }
+}

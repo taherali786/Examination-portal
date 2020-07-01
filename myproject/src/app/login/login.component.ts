@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("name",response.data[0].name);
         localStorage.setItem("email",response.data[0].email);
         localStorage.setItem("role",response.data[0].role);
+        alert(localStorage.getItem('id')+localStorage.getItem('name')+localStorage.getItem('email')+localStorage.getItem('role'));
         alert("you are login");
         this.router.navigate(['/dashboard']);
       }else{

@@ -20,6 +20,10 @@ import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { ShowqbankComponent } from './showqbank/showqbank.component';
 import { AddnewqueComponent } from './addnewque/addnewque.component';
 import { ShowdetailComponent } from './showdetail/showdetail.component';
+import { ShowpaperComponent } from './showpaper/showpaper.component';
+import { ShowpaperdetailComponent } from './showpaperdetail/showpaperdetail.component';
+import { JointestdetailComponent } from './jointestdetail/jointestdetail.component';
+import { ShowqdetailComponent } from './showqdetail/showqdetail.component';
 
 
 const routes: Routes = [
@@ -35,14 +39,17 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,canActivate:[UserauthGuard], children:[
     {path:'',component:CreatetestComponent},
     {path:'addnewque',component:AddnewqueComponent},
+    {path:'showqdetail',component:ShowqdetailComponent},
     {path:'showdetail',component:ShowdetailComponent},
     {path:'createqbank',component:CreateqbankComponent},
     {path:'createtest',component:CreatetestComponent},
     {path:'showresult',component:ShowresultComponent},
-    {path:'addpart',component:AddpartComponent}
+    {path:'showpaper',component:ShowpaperComponent},
+    {path:'showpaperdetail',component:ShowpaperdetailComponent}
   ]},
   {path:'dashboard2',component:Dashboard2Component ,canActivate:[UserauthGuard],children:[
     {path:'',component:JointestComponent},
+    {path:'jointestdetail',component:JointestdetailComponent},
     {path:'showqbank',component:ShowqbankComponent},
     {path:'showresult',component:ShowresultComponent}
   ]}

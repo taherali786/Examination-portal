@@ -1,6 +1,6 @@
  .one{
      width:100%;
-    background-image: linear-gradient(#4568dc,#b06ab3);
+    background-image: linear-gradient(#f7b733,#fc4a1a);
 
  }
  .nav{
@@ -28,11 +28,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
     height: 50%;
-    outline: none;
+    /* outline: none; */
  }
- .nav:hover .navlink{
+ /* .nav:hover .navlink{
      opacity: 0.5;
- }
+ } */
 .nav .navlink:hover{
     opacity: 1;
     transform: scale(1.2);

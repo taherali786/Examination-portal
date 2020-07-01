@@ -31,6 +31,12 @@ import { Dashboard2headerComponent } from './dashboard2header/dashboard2header.c
 import { ShowqbankComponent } from './showqbank/showqbank.component';
 import { AddnewqueComponent } from './addnewque/addnewque.component';
 import { ShowdetailComponent } from './showdetail/showdetail.component';
+import { ShowpaperComponent } from './showpaper/showpaper.component';
+import { ShowpaperdetailComponent } from './showpaperdetail/showpaperdetail.component';
+import { JointestdetailComponent } from './jointestdetail/jointestdetail.component';
+import { ShowqdetailComponent } from './showqdetail/showqdetail.component';
+import {CountdownModule} from 'ngx-countdown';
+
 
 @NgModule({
   declarations: [
@@ -60,13 +66,18 @@ import { ShowdetailComponent } from './showdetail/showdetail.component';
     Dashboard2headerComponent,
     ShowqbankComponent,
     AddnewqueComponent,
-    ShowdetailComponent
+    ShowdetailComponent,
+    ShowpaperComponent,
+    ShowpaperdetailComponent,
+    JointestdetailComponent,
+    ShowqdetailComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CountdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

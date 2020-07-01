@@ -1,6 +1,6 @@
 .ones{
     width:100%;
-   background-image: linear-gradient(#4568dc,#b06ab3);
+    background-image: linear-gradient(#f7b733,#fc4a1a);
 
 }
 .navi{
@@ -8,6 +8,7 @@
     display: flex;
     justify-content: flex-start;
     flex-wrap: nowrap;
+    /* background-color: blue; */
 }
 .navlinks{
     width:150px;
@@ -27,13 +28,12 @@
    margin-top: 20px;
    margin-bottom: 20px;
    height: 50%;
-   outline: none;
 }
-.navi:hover .navlinks{
+/* .navi:hover .navlinks{
     opacity: 0.5;
-}
+} */
 .navi .navlinks:hover{
-   opacity: 1;
+   /* opacity: 1; */
    transform: scale(1.2);
 }
 .ones .toggles{

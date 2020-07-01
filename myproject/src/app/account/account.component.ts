@@ -48,7 +48,7 @@ export class AccountComponent implements OnInit {
          
          this.router.navigate(['/login']);
       }else{
-        alert("not registered");
+        alert(" You Are Not Registered");
       }
     })
   }
