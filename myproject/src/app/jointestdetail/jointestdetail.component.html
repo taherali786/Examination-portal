@@ -2,7 +2,7 @@
     <div class="row"><button id="show" (click)="addon()"></button>
         <div class="paper-box" >
             <div class="paper">
-               <div class="countdown" *ngIf="iscount"> <countdown #countdown [config]="{leftTime:i,format:'mm:ss'}" (event)="onTimer($event)" ></countdown></div>
+               <div class="countdown" *ngIf="iscount"> <countdown #countdown [config]="{leftTime:timer,format:'mm:ss'}" (event)="onTimer($event)" ></countdown></div>
                <div class="countdown" *ngIf="iscountfalse"><countdown [config]="{format:'mm:ss'}"></countdown> </div>
                <div class="question" id="q">
                    <div class="row rows">

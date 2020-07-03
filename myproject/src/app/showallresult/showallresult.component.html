@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <div class="address">Dashboard > Show-All-Result</div> 
     <div class="row rows">
         <div class="col-sm-12 column">
             <div class="heading">RESULT</div>
@@ -12,18 +13,16 @@
                     <tr>
                         <th>Subject</th>
                         <th>Examiner</th>
-                         <th>All Q.</th>
-                         <th>Right Ans.</th>
-                        <th *ngIf="isshow">Result</th>
+                         <th>Student Attended</th>
+                        <th >Result</th>
                     </tr>
                     </thead>
                     <tbody id="myTable">
                     <tr *ngFor="let p of post">
-                        <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p._id}}"></td>
-                        <td>{{p.examiner}}</td>
-                        <td>{{p.rightanswer+p.wronganswer}}</td>
-                        <td>{{p.rightanswer}}</td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value)">View</button></td>
+                        <td>{{p._id.examsubject}}<input type="hidden" #subnameInput value="{{p._id.examsubject}}"></td>
+                        <td>{{p._id.examiner}}<input type="hidden" #examinerInput value="{{p._id.examiner}}"></td>
+                        <td>{{p.count}}</td>
+                        <td ><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value,examinerInput.value)">View</button></td>
                     </tr>
                     </tbody>
                 </table>

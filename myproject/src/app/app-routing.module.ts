@@ -24,6 +24,10 @@ import { ShowpaperComponent } from './showpaper/showpaper.component';
 import { ShowpaperdetailComponent } from './showpaperdetail/showpaperdetail.component';
 import { JointestdetailComponent } from './jointestdetail/jointestdetail.component';
 import { ShowqdetailComponent } from './showqdetail/showqdetail.component';
+import { ShowallresultComponent } from './showallresult/showallresult.component';
+import { ViewallresultComponent } from './viewallresult/viewallresult.component';
+import { ViewresultComponent } from './viewresult/viewresult.component';
+import { ShowqbankdetailComponent } from './showqbankdetail/showqbankdetail.component';
 
 
 const routes: Routes = [
@@ -41,9 +45,10 @@ const routes: Routes = [
     {path:'addnewque',component:AddnewqueComponent},
     {path:'showqdetail',component:ShowqdetailComponent},
     {path:'showdetail',component:ShowdetailComponent},
+    {path:'showallresult',component:ShowallresultComponent},
+    {path:'viewallresult',component:ViewallresultComponent},
     {path:'createqbank',component:CreateqbankComponent},
     {path:'createtest',component:CreatetestComponent},
-    {path:'showresult',component:ShowresultComponent},
     {path:'showpaper',component:ShowpaperComponent},
     {path:'showpaperdetail',component:ShowpaperdetailComponent}
   ]},
@@ -51,7 +56,9 @@ const routes: Routes = [
     {path:'',component:JointestComponent},
     {path:'jointestdetail',component:JointestdetailComponent},
     {path:'showqbank',component:ShowqbankComponent},
-    {path:'showresult',component:ShowresultComponent}
+    {path:'showresult',component:ShowresultComponent},
+    {path:'showqbankdetail',component:ShowqbankdetailComponent},
+    {path:'viewresult',component:ViewresultComponent}
   ]}
  
 ];

@@ -5,6 +5,13 @@
     padding-top: 8%;
     margin-top: -17px;
 }
+.container-fluid .address{
+    margin:0 auto;
+    height: 10px;
+    width: 400px;
+  padding-bottom: 25px;
+  font-weight: 600;
+}
 .container-fluid .rows{
     width:500px;
     height: 450px;

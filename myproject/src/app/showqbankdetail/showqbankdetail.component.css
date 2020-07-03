@@ -1,23 +1,18 @@
 .container-fluid{
     width:100%;
-    height:657px;
-    background-image: linear-gradient(#00c3ff,#c0c0aa);
+    height:737px;
+    background-image: linear-gradient( #00c3ff,#c0c0aa);
     padding-top: 8%;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: -17px;
-}
-.container-fluid .address{
-    margin:0 auto;
-    height: 10px;
-    width: 78%;
-  padding-bottom: 25px;
-  font-weight: 600;
 }
 .container-fluid .box{
     width:80%;
     height: 70%;
     margin:0 auto;
     background-color: white;
-    overflow: auto;
+    overflow:auto;
 }
 .container-fluid .box .heading{
     height:30px;
@@ -26,7 +21,6 @@
     font-size: 25px;
     line-height: 30px;
     font-weight: bold;
-    text-transform: uppercase;
 }
 .container-fluid .box .table-footer{
     padding-right: 5%;

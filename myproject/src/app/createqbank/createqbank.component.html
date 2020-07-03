@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <div class="address">Dashboard>Create-Question-Bank</div> 
     <div class="row rows">
         <div class="col-sm-5 column">
             <div class="row">
@@ -33,16 +34,16 @@
                             placeholder="Type something to search list items">
                     </div>
             <div class="table-responsive" >
-                <table class="table table-striped" *ngFor="let p of post">
+                <table class="table table-striped" >
                     <thead>
                     <tr>
-                        <th>Subject Name</th>
+                        <th>Subject</th>
                         <th *ngIf="ishide2">Choose Question</th>
                         <th *ngIf="isshow">Edit</th>
                         <th *ngIf="isshow">Delete</th>
                     </tr>
                     </thead>
-                    <tbody id="myTable" >
+                    <tbody id="myTable" *ngFor="let p of post">
                     <tr>
                         <td>{{p.subname}}<input type="hidden" #subnameInput value="{{p.subname}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
                         <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>

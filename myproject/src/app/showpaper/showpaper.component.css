@@ -5,8 +5,15 @@
     padding-top: 8%;
     margin-top: -17px;
 }
+.container-fluid .address{
+    margin:0 auto;
+    height: 10px;
+    width: 430px;
+  padding-bottom: 25px;
+  font-weight: 600;
+}
 .container-fluid .rows{
-    width:520px;
+    width:460px;
     height:500px;
     background-color: white;
     /* margin-left:120px; */

@@ -5,6 +5,14 @@
     padding-top: 8%;
     display: flex;
     flex-wrap: wrap;
+    margin-top: -17px;
+}
+.container-fluid .address{
+    margin:0 auto;
+    height: 10px;
+    width: 78%;
+  padding-bottom: 25px;
+  font-weight: 600;
 }
 .container-fluid .box{
     width:80%;
@@ -12,6 +20,7 @@
     margin:0 auto;
     background-color: white;
     overflow:auto;
+    margin-top: -140px;
 }
 .container-fluid .box .heading{
     height:30px;

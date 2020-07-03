@@ -79,6 +79,14 @@ dlttext(title:string,title2:string){
   .subscribe((response)=>{
     if(response.status=="ok"){
         alert(response.data);
+        this.ds.openfile({userid:localStorage.getItem('id')}).subscribe((response)=>{
+          if(response.status=="ok"){
+              this.post=response.data;
+              this.number=this.post.length;
+          }else{
+            // alert(response.data);
+          }
+        })
     }else{
       alert(response.data);
     }

@@ -90,7 +90,7 @@ export class ShowpaperdetailComponent implements OnInit {
   }
 
   addmore(){
-    this.router.navigate(['/dashboard/showdetail'],{queryParams:{subname:this.examsubject,examiner:"mohammed",uid:this.paperid}});
+    this.router.navigate(['/dashboard/showdetail'],{queryParams:{subname:this.examsubject,examiner:this.examiner,uid:this.paperid}});
   }
 
 }

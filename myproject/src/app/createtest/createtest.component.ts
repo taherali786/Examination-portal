@@ -18,6 +18,8 @@ isgood=false;
 privacyProp;
 resultProp;
 timerProp;
+istimer=false;
+selecttimerProp;
   constructor(private router:Router,private ds:DataService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ timerProp;
     }else if( this.examinerProp==null){
       // alert("fill compulsory field");
     }else{
+      
       this.isgood=true;
     }
   }
@@ -47,28 +50,39 @@ timerProp;
   }
 
 
-    savetest()
-    {
-      this.ds.savetst({subname:this.subnameProp,subcode:this.subcodeProp,examiner:this.examinerProp,userid:localStorage.getItem('id')}).subscribe((response)=>{
-        if(response.status=="ok"){
-          alert(JSON.stringify(response.data[0]));
-          localStorage.setItem("examsubject",this.subnameProp);
-          localStorage.setItem("examteacher",this.examinerProp);
-          alert(localStorage.getItem("examsubject"));
-          document.getElementById('2step').click();
-        }else{
-          alert(response.data);
-        }
-      });
+   
+savetest()
+{
+  
+  this.ds.savetst({subname:this.subnameProp.trim(),subcode:this.subcodeProp,examiner:this.examinerProp.trim(),userid:localStorage.getItem('id')}).subscribe((response)=>{
+    if(response.status=="ok"){
+      // alert(JSON.stringify(response.data[0]));
+      localStorage.setItem("examsubject",this.subnameProp);
+      localStorage.setItem("examteacher",this.examinerProp);
+      // alert(localStorage.getItem("examsubject"));
+      alert("Your Test Subject is Successfully Created Now Add some Question in it ")
+      document.getElementById('2step').click();
+    }else{
+      alert(response.data);
     }
+  });
+}
+
+savepaperlast(){
+  // alert(this.selecttimerProp);
+  this.ds.savepaperlst({subname:localStorage.getItem("examsubject"),examiner:localStorage.getItem("examteacher"),timer:this.selecttimerProp,privacysetting:this.privacyProp,timersetting:this.timerProp,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    if(response.status=="ok"){
+        alert(response.data);
+        this.router.navigate(['/dashboard/showpaper']);
+    }else{
+      alert(response.data);
+    }
+  })
  
-    savepaperlast(){
-      this.ds.savepaperlst({subname:localStorage.getItem("examsubject"),examiner:localStorage.getItem("examteacher"),resultsetting:this.resultProp,privacysetting:this.privacyProp,timersetting:this.timerProp,userid:localStorage.getItem('id')}).subscribe((response)=>{
-        if(response.status=="ok"){
-            alert(response.data);
-        }else{
-          alert(response.data);
-        }
-      })
-    }
+}
+
+timer(){
+    this.istimer=true;
+}
+
 }

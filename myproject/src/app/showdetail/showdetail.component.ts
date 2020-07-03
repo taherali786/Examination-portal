@@ -17,20 +17,31 @@ export class ShowdetailComponent implements OnInit {
   select:any[]=[];
   examiner;
   uid;
+  examsubject;
   constructor(private route:ActivatedRoute,private ds:DataService,private router:Router) { }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((d)=>{
-      this.subname=d.get('subname');
-      alert(this.subname);
+      this.examsubject=d.get('subname');
+      alert(this.examsubject);
       this.examiner=d.get('examiner');
       alert(this.examiner);
       this.uid=d.get('uid');
       alert(this.uid);
     })
+
+    // this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.examsubject}).subscribe((response)=>{
+
+    //   if(response.status=="ok"){
+    //     this.quesid=response.data[0].questionid;
+    //   }else{
+    //     alert("Your Question Bank is Not Available We rediredting.. you to Question Bank Page ");
+    //     this.router.navigate(['/dashboard/createqbank']);
+    //   }
+    // })
     
     if(this.examiner==null){
-    this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.subname}).subscribe((response)=>{
+    this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.examsubject}).subscribe((response)=>{
 
       if(response.status=="ok"){
         this.quesid=response.data[0].questionid;
@@ -39,7 +50,7 @@ export class ShowdetailComponent implements OnInit {
       }
     })
   }else{
-    this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.subname}).subscribe((response)=>{
+    this.ds.showquestion({userid:localStorage.getItem('id'),subname:this.examsubject}).subscribe((response)=>{
 
       if(response.status=="ok"){
         this.quesid=response.data[0].questionid;
@@ -83,10 +94,10 @@ export class ShowdetailComponent implements OnInit {
     }else{
       alert("update block");
       for(var i=0;i<this.select.length;i++){
-      this.ds.updatepaperlst({paper:this.select[i],examsubject:this.subname,userid:this.uid}).subscribe((response)=>{
+      this.ds.updatepaperlst({paper:this.select[i],examsubject:this.examsubject,userid:this.uid}).subscribe((response)=>{
         if(response.status=="ok"){
           alert(JSON.stringify(response.data));
-          this.router.navigate(['/dashboard/showpaperdetail'],{queryParams:{examsubject:this.subname,examiner:localStorage.getItem('subjectteacher')}});
+          this.router.navigate(['/dashboard/showpaperdetail'],{queryParams:{examsubject:this.examsubject,examiner:localStorage.getItem('subjectteacher')}});
         }else{
             alert(response.data);
         }

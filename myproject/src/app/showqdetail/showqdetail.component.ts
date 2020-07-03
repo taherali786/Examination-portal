@@ -62,8 +62,20 @@ export class ShowqdetailComponent implements OnInit {
     //  // alert(JSON.stringify(this.select[i].option));
     //   this.ds.dltvalue({question:this.select[i].question,answer:this.select[i].answer,option:this.select[i].option,paperid:this.paperid}).subscribe((response)=>{
     //     if(response.status=="ok"){
-    //         alert(JSON.stringify(response.data));
-    //         window.location.reload(true);
+    //        // alert(JSON.stringify(response.data));
+    //         this.ds.showqdetail({userid:localStorage.getItem('id'),examiner:this.examiner,subname:this.examsubject}).subscribe((response)=>{
+
+    //           if(response.status=="ok"){
+    //             this.paperquesid=response.data[0].questionid;
+    //             this.paperid=response.data[0]._id;
+    //             console.log(this.paperquesid);
+    //             console.log(this.paperid);
+    //             localStorage['paperques']=JSON.stringify(this.paperquesid);
+        
+    //           }else{
+    //             alert(response.data);
+    //           }
+    //         })
     //     }else{
     //       alert(response.data);
     //     }

@@ -1,1 +1,30 @@
-<p>showqbank works!</p>
+<div class="container-fluid">
+    <div class="row rows">
+        <div class="col-sm-12 column4">
+                    <div class="search">
+                    <input class="form-control mb-4" id="tableSearch" type="text"
+                            placeholder="Type something to search list items">
+                    </div>
+            <div class="table-responsive" >
+                <table class="table table-striped" *ngFor="let p of post">
+                    <thead>
+                    <tr>
+                        <th>Subject Name</th>
+                        <td>Examiner Name</td>
+                        <th>Read</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myTable" >
+                    <tr>
+                        <td>{{p.subname}}
+                            <input type="hidden" #idInput value="{{p._id}}"></td>
+                        <td>{{p.examiner}}</td>
+                        <td ><button class="btn btn-primary" (click)="showtext(idInput.value)">Open</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>

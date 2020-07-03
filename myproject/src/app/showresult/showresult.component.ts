@@ -12,9 +12,6 @@ export class ShowresultComponent implements OnInit {
   ishide2=false;
   isshow=true;
 post;
-rightanswer;
-wronganswer;
-total;
   constructor(private ds:DataService,private router:Router) { }
 
   ngOnInit(): void {
@@ -22,10 +19,6 @@ total;
     this.ds.showresult({userid:localStorage.getItem('id')}).subscribe((response)=>{
       if(response.status=="ok"){
           this.post=response.data;
-          this.rightanswer=response.data[0].rightanswer;
-          this.wronganswer=response.data[0].wronganswer;
-          this.total=this.rightanswer+this.wronganswer;
-          alert(this.rightanswer+this.wronganswer);
 
       }else{
          alert(response.data);

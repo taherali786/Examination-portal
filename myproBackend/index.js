@@ -222,6 +222,7 @@ app.post('/open-file', bodyParser.json(),(req,res)=>{
 })
 
 app.post('/show-question', bodyParser.json(),(req,res)=>{
+    console.log(req.body.subname);
     console.log(req.body);
     var collection=connection.db(dbName).collection('savequestion');
     collection.find({'userid':req.body.userid,'subname':req.body.subname}).toArray((err,docs)=>{
@@ -255,7 +256,7 @@ app.post('/save-paper-last', bodyParser.json(),(req,res)=>{
     var collection=connection.db(dbName).collection('savepaper');
     console.log(req.body.subname);
             collection.update({examsubject:req.body.subname,examiner:req.body.examiner,userid:req.body.userid},{
-                "$set":{resultsetting:req.body.resultsetting,privacysetting:req.body.privacysetting,timersetting:req.body.timersetting}}
+                "$set":{timer:req.body.timer,privacysetting:req.body.privacysetting,timersetting:req.body.timersetting}}
             ,(err,result)=>{
                     if(!err){
                         res.send({status:"ok",data:"data stored in same table"});
@@ -302,11 +303,11 @@ app.post('/delete-paper-detail', bodyParser.json(),(req,res)=>{
     //collection.find({_id:req.body.paperid,'paper.question':req.body.question}).toArray((err,docs)=>{
     collection.updateOne({_id:ObjectId(req.body.paperid),'paper.question':req.body.question},{
         $pull:{'paper':{question:req.body.question}}},{multi:false}
-    ,(err,docs)=>{  
-    if(!err && docs.length>0){
+    ,(err,result)=>{  
+    if(!err){
             res.send({status:"ok",data:"deleted"});
         }else{
-            res.send({status:"failed",data:JSON.stringify(err)});
+            res.send({status:"failed",data:err});
         }
     })
    
@@ -337,7 +338,7 @@ app.post('/delete-paper',bodyParser.json(),(req,res)=>{
         if(!err && docs.length>0){
             //res.send({status:"ok",data:docs[0]._id});
             collection.remove({_id:ObjectId(docs[0]._id)},(err,result)=>{
-                if(!err && docs.length>0){
+                if(!err){
                    // res.send({status:"ok",data:"deleted"});
                    var collection=connection.db(dbName).collection('subject');
                    collection.remove({'userid':req.body.userid,'subname':req.body.examsubject,'examiner':req.body.examiner},(err,result)=>{
@@ -358,15 +359,13 @@ app.post('/delete-paper',bodyParser.json(),(req,res)=>{
     })
 })
 
-
 app.post('/open-join-paper',bodyParser.json(),(req,res)=>{
     console.log(req.body.privacysetting);
     var collection=connection.db(dbName).collection('savepaper');
+   
     collection.find({privacysetting:req.body.privacysetting}).toArray((err,docs)=>{
         if(!err && docs.length>0){
-            //console.log(docs);
             res.send({status:"ok",data:docs});
-
         }else{
             res.send({status:"failed",data:"error occured"});
         }
@@ -396,7 +395,7 @@ app.post('/delete-q-bank',bodyParser.json(),(req,res)=>{
         if(!err && docs.length>0){
             //res.send({status:"ok",data:docs[0]._id});
             collection.remove({_id:ObjectId(docs[0]._id)},(err,result)=>{
-                if(!err && docs.length>0){
+                if(!err){
                    // res.send({status:"ok",data:"deleted"});
                    var collection=connection.db(dbName).collection('subjectinfo');
                    collection.remove({'userid':req.body.userid,'subname':req.body.subname,'examiner':req.body.examiner},(err,result)=>{
@@ -436,6 +435,7 @@ app.post('/save-answer', bodyParser.json(),(req,res)=>{
     console.log(req.body.saveans[0]);
     console.log(req.body.examsubject);
     console.log(req.body.examiner);
+    console.log("438"+" "+req.body.examinerid)
     var collection=connection.db(dbName).collection('saveanswer');
     collection.find({'examsubject':req.body.examsubject,'userid':req.body.userid,'examiner':req.body.examiner,'examinerid':req.body.examinerid}).toArray((err,docs)=>{
         if(!err && docs.length>0){
@@ -478,6 +478,92 @@ app.post('/show-result', bodyParser.json(),(req,res)=>{
     })
    
 })
+
+app.post('/check-join-paper', bodyParser.json(),(req,res)=>{
+    console.log(req.body);
+    var collection=connection.db(dbName).collection('saveanswer');
+    collection.find({'paperid':req.body.paperid}).toArray((err,docs)=>{
+        if(!err && docs.length>0){
+            res.send({status:"ok",data:docs});
+
+        }else{
+            res.send({status:"failed",data:"error occured"});
+        }
+    })
+   
+})
+
+app.post('/open-join-answer',bodyParser.json(),(req,res)=>{
+    console.log("496"+" "+req.body.userid);
+    var collection=connection.db(dbName).collection('saveanswer');
+   
+    collection.find({userid:req.body.userid}).toArray((err,docs)=>{
+        if(!err && docs.length>0){
+            res.send({status:"ok",data:docs});
+        }else{
+            res.send({status:"failed",data:"error occured"});
+        }
+    })
+   
+})
+
+app.post('/open-student-qbank',bodyParser.json(),(req,res)=>{
+    var collection=connection.db(dbName).collection('savequestion');
+   
+    collection.find().toArray((err,docs)=>{
+        if(!err && docs.length>0){
+            res.send({status:"ok",data:docs});
+        }else{
+            res.send({status:"failed",data:"error occured"});
+        }
+    })
+   
+})
+
+
+app.post('/show-qbank-detail',bodyParser.json(),(req,res)=>{
+    console.log(req.body.id);
+    var collection=connection.db(dbName).collection('savequestion');
+   
+    collection.find({_id:ObjectId(req.body.id)}).toArray((err,docs)=>{
+        if(!err && docs.length>0){
+            res.send({status:"ok",data:docs});
+        }else{
+            res.send({status:"failed",data:"error occured"});
+        }
+    })
+   
+})
+
+app.post('/show-all-result', bodyParser.json(),(req,res)=>{
+    //console.log(req.body.userid);
+    var collection=connection.db(dbName).collection('saveanswer');
+    collection.aggregate([{"$match":{examinerid:req.body.userid}},{"$group":{_id:{examsubject:"$examsubject",examiner:"$examiner"},count:{$sum:1}}}]).toArray((err,docs)=>{
+        if(!err && docs.length>0){
+            console.log("542"+" "+JSON.stringify(docs));
+            res.send({status:"ok",data:docs});
+
+        }else{
+            res.send({status:"failed",data:"error occured"});
+        }
+    })
+   
+})
+
+app.post('/view-all-result',bodyParser.json(),(req,res)=>{
+    var collection=connection.db(dbName).collection('saveanswer');
+   
+    collection.find({examinerid:req.body.examinerid,examsubject:req.body.examsubject,examiner:req.body.examiner}).toArray((err,docs)=>{
+        if(!err && docs.length>0){
+            //console.log("559"+" "+JSON.stringify(docs));
+            res.send({status:"ok",data:docs});
+        }else{
+            res.send({status:"failed",data:"error occured"});
+        }
+    })
+   
+})
+
 
 
 app.listen(3000, ()=>{console.log("server is listining on port 3000")});

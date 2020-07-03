@@ -36,6 +36,10 @@ import { ShowpaperdetailComponent } from './showpaperdetail/showpaperdetail.comp
 import { JointestdetailComponent } from './jointestdetail/jointestdetail.component';
 import { ShowqdetailComponent } from './showqdetail/showqdetail.component';
 import {CountdownModule} from 'ngx-countdown';
+import { ShowallresultComponent } from './showallresult/showallresult.component';
+import { ViewresultComponent } from './viewresult/viewresult.component';
+import { ViewallresultComponent } from './viewallresult/viewallresult.component';
+import { ShowqbankdetailComponent } from './showqbankdetail/showqbankdetail.component';
 
 
 @NgModule({
@@ -70,7 +74,11 @@ import {CountdownModule} from 'ngx-countdown';
     ShowpaperComponent,
     ShowpaperdetailComponent,
     JointestdetailComponent,
-    ShowqdetailComponent 
+    ShowqdetailComponent,
+    ShowallresultComponent,
+    ViewresultComponent,
+    ViewallresultComponent,
+    ShowqbankdetailComponent 
   ],
   imports: [
     BrowserModule,

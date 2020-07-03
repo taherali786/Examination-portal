@@ -1,6 +1,6 @@
 <div class="container-fluid">
                 
-                  
+    <div class="address">Dashboard>Create-New-Test</div> 
                             <div class="row rows">
                                 <div class="headline">
                                    <div class="one" id="one">Step1</div>
@@ -14,7 +14,7 @@
                                         <form action="/action_page.php" #f="ngForm">
                                             <div class="form-group">
                                                 <label class="pt-5" for="subname">Subject Id:</label>
-                                                <input #subnameref="ngModel" [(ngModel)]="subnameProp" type="text" class="form-control" id="subname" placeholder="Enter Subject Name" name="subname" (keyup)="next()">
+                                                <input #subnameref="ngModel" [(ngModel)]="subnameProp" (ngModelChange)="subnameProp=$event.toUpperCase()" type="text" class="form-control" id="subname" placeholder="Enter Subject Name" name="subname" (keyup)="next()">
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="subcode">Subject Code:</label>
@@ -22,7 +22,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                 <label for="exm">Examiner Name:</label>
-                                                <input #examineref="ngModel" [(ngModel)]="examinerProp" type="text" class="form-control" id="exm" placeholder="Enter Examiner Name" name="exm" (keyup)="next()">
+                                                <input #examineref="ngModel" [(ngModel)]="examinerProp" (ngModelChange)="examinerProp=$event.toUpperCase()" type="text" class="form-control" id="exm" placeholder="Enter Examiner Name" name="exm" (keyup)="next()">
                                                 </div>
                                         
                                             <button *ngIf="isgood" type="submit" class="btn btn-primary ml-5 pl-4 pr-4"  (click)="savetest()">Next</button>
@@ -51,17 +51,20 @@
                                                 <label class="radio-inline mr-4 "><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="public" class="mr-2" checked>public</label>
                                                 <label class="radio-inline mr-4"><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="private" class="mr-2">private</label>
                                             </div>
-                                            <label for="email" class="heading">RESULT SETTTING</label>
-                                            <div class="alert alert-success">How You Want To Show Answer</div>
-                                            <div class="form-inline form-group">                                     
-                                                <label class="radio-inline mr-4 "><input type="radio" name="resultProp" #resultref="ngModel" [(ngModel)]="resultProp" value="perquestion" class="mr-2" checked>At Every questions</label>
-                                                <label class="radio-inline mr-4"><input type="radio" name="resultProp" #resultref="ngModel" [(ngModel)]="resultProp" value="atlast" class="mr-2">At Last</label>
-                                            </div>
                                             <label for="email" class="heading">TIMER SETTTING</label>
                                             <div class="form-inline form-group">                                     
-                                                <label class="radio-inline mr-2"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeoneveryque" class="mr-2" checked>Every Question</label>
+                                                <label class="radio-inline mr-2"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeoneveryque" class="mr-2" checked (click)="timer()">Every Question</label>
                                                 <label class="radio-inline"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeonwholeses" class="mr-2">Whole Session</label>
                                             </div>
+                                            <div class="form-group form-inline" *ngIf="istimer">
+                                                <label for="sel1">Select time:</label>
+                                                <select class="form-control" id="sel1" name="selecttimerProp" #selecttimerref="ngModel" [(ngModel)]="selecttimerProp">
+                                                  <option value="15">15s</option>
+                                                  <option value="20">20s</option>
+                                                  <option value="25">25s</option>
+                                                  <option value="30">30s</option>
+                                                </select>
+                                             </div>
                                             <button type="submit" class="btn btn-primary" (click)="savepaperlast()">Done</button>
                                         </form>
                                     </div>

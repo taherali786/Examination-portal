@@ -32,6 +32,8 @@ temp;
 examsubject;
 examiner;
 id;
+timer;
+examinerid;
 @ViewChild('countdown') counter:CountdownComponent;
   constructor(private router:Router,private ds:DataService,private route:ActivatedRoute) { }
  
@@ -47,6 +49,9 @@ id;
         this.examsubject=response.data[0].examsubject;
         this.examiner=response.data[0].examiner;
         this.id=response.data[0].user;
+        this.timer=response.data[0].timer;
+          this.examinerid=response.data[0].userid;
+         
          document.getElementById('show').click();
          
          console.log(this.paperoption);
@@ -110,7 +115,7 @@ optionadd(title:string){
     })
     console.log(this.saveanswer);
     
-    this.ds.saveanswer({saveans:this.saveanswer,paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.id,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
       if(response.status=="ok"){
           this.isoption=false;
           this.isft=false;
@@ -132,7 +137,7 @@ optionadd(title:string){
     })
     console.log(this.saveanswer);
 
-    this.ds.saveanswer({saveans:this.saveanswer,paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.id,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),examinerid:this.examinerid,paperid:this.paperid,username:localStorage.getItem('name'),rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
@@ -165,7 +170,7 @@ tfadd(){
     })
     console.log(this.saveanswer);
 
-    this.ds.saveanswer({saveans:this.saveanswer,paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.id,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
@@ -189,7 +194,7 @@ tfadd(){
     })
     console.log(this.saveanswer);
 
-    this.ds.saveanswer({saveans:this.saveanswer,paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.id,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
@@ -221,7 +226,7 @@ onTimer(e:Event){
     })
     console.log(this.saveanswer);
 
-    this.ds.saveanswer({saveans:this.saveanswer,paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.id,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
@@ -244,7 +249,7 @@ onTimer(e:Event){
         })
         console.log(this.saveanswer);
 
-        this.ds.saveanswer({saveans:this.saveanswer,paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.id,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+        this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
           if(response.status=="ok"){
             this.isoption=false;
             this.isft=false;
