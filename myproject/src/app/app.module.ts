@@ -1,31 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {HashLocationStrategy,LocationStrategy} from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CourseComponent } from './course/course.component';
-import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
-import { JsComponent } from './js/js.component';
-import { HtmlComponent } from './html/html.component';
-import { CssComponent } from './css/css.component';
 import { CreatetestComponent } from './createtest/createtest.component';
 import { JointestComponent } from './jointest/jointest.component';
-import { CustomcardComponent } from './customcard/customcard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardheaderComponent } from './dashboardheader/dashboardheader.component';
 import { WebsiteComponent } from './website/website.component';
-import { LogoutComponent } from './logout/logout.component';
 import { CreateqbankComponent } from './createqbank/createqbank.component';
 import { ShowresultComponent } from './showresult/showresult.component';
-import { AddpartComponent } from './addpart/addpart.component';
 import { Dashboard2Component } from './dashboard2/dashboard2.component';
 import { Dashboard2headerComponent } from './dashboard2header/dashboard2header.component';
 import { ShowqbankComponent } from './showqbank/showqbank.component';
@@ -40,32 +32,31 @@ import { ShowallresultComponent } from './showallresult/showallresult.component'
 import { ViewresultComponent } from './viewresult/viewresult.component';
 import { ViewallresultComponent } from './viewallresult/viewallresult.component';
 import { ShowqbankdetailComponent } from './showqbankdetail/showqbankdetail.component';
+import * as CryptoJS from 'crypto-js';
+import {BackButtonDisableModule} from 'angular-disable-browser-back-button';
+import {SocketIoModule,SocketIoConfig,Socket} from 'ngx-socket-io';
+import { ResultcheckComponent } from './resultcheck/resultcheck.component';
 
+//import {CountdownTimerModule} from 'ngx-countdown-timer-date';
+
+const config:SocketIoConfig={url:"http://3.134.86.110",options:{transports:['websocket','polling']}};
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CourseComponent,
-    AboutComponent,
     ContactComponent,
     HeaderComponent,
-    FooterComponent,
     LoginComponent,
     AccountComponent,
-    JsComponent,
-    HtmlComponent,
-    CssComponent,
     CreatetestComponent,
     JointestComponent,
-    CustomcardComponent,
     DashboardComponent,
     DashboardheaderComponent,
     WebsiteComponent,
-    LogoutComponent,
     CreateqbankComponent,
     ShowresultComponent,
-    AddpartComponent,
     Dashboard2Component,
     Dashboard2headerComponent,
     ShowqbankComponent,
@@ -78,14 +69,19 @@ import { ShowqbankdetailComponent } from './showqbankdetail/showqbankdetail.comp
     ShowallresultComponent,
     ViewresultComponent,
     ViewallresultComponent,
-    ShowqbankdetailComponent 
+    ShowqbankdetailComponent,
+    ResultcheckComponent ,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CountdownModule
+    CountdownModule,
+   // CountdownTimerModule.forRoot(),
+   SocketIoModule.forRoot(config)
+    //BackButtonDisableModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

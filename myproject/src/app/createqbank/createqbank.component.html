@@ -1,59 +1,61 @@
 <div class="container-fluid">
-    <div class="address">Dashboard>Create-Question-Bank</div> 
-    <div class="row rows">
-        <div class="col-sm-5 column">
-            <div class="row">
-                <div class="col-sm-12 column3">
+    <div class="box">
+        <div class="address">Dashboard>Create-Question-Bank</div> 
+        <div class="row rows">
+            <div class="col-sm-5 column">
+                <div class="row">
+                    <div class="col-sm-12 column3">
 
-                </div>
-                <div class="col-sm-12">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Examiner</th>
-                                <td style="text-transform: uppercase; font-weight: bold;">{{name}}</td>
-                            </tr>
-                            <tr>
-                                <th>Total Subject Added</th>
-                                <td  style="text-transform: uppercase; font-weight: bold;">{{number}}</td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <td></td>
-                            </tr>
-                        </table>
                     </div>
-                    <button  *ngIf="isshow" type="submit" class="btn btn-primary" (click)="gotonew()">Add New Subject Q Bank</button>  
-                    <button  *ngIf="ishide2" type="submit" class="btn btn-primary" (click)="goto()">Add New Subject Q Bank</button>  
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Examiner</th>
+                                    <td style="text-transform: uppercase; font-weight: bold;">{{name}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Subject Added</th>
+                                    <td  style="text-transform: uppercase; font-weight: bold;">{{number}}</td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button  *ngIf="isshow" type="submit" class="btn btn-primary ml-4" (click)="gotonew()">Add New Subject Q Bank</button>  
+                        <button  *ngIf="ishide2" type="submit" class="btn btn-primary ml-4" (click)="goto()">Add New Subject Q Bank</button>  
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-7 column4">
-                    <div class="search">
-                    <input class="form-control mb-4" id="tableSearch" type="text"
-                            placeholder="Type something to search list items">
-                    </div>
-            <div class="table-responsive" >
-                <table class="table table-striped" >
-                    <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th *ngIf="ishide2">Choose Question</th>
-                        <th *ngIf="isshow">Edit</th>
-                        <th *ngIf="isshow">Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody id="myTable" *ngFor="let p of post">
-                    <tr>
-                        <td>{{p.subname}}<input type="hidden" #subnameInput value="{{p.subname}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
-                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-success" (click)="edittext(subnameInput.value,examinerInput.value)">Edit</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-danger "  (click)="dlttext(subnameInput.value,examinerInput.value)">Delete</button></td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="col-sm-7 column4">
+                        <div class="search">
+                        <input class="form-control mb-4" id="tableSearch" type="text"
+                                placeholder="Type something to search list items">
+                        </div>
+                <div class="table-responsive" >
+                    <table class="table table-striped" >
+                        <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th *ngIf="ishide2">Choose Question</th>
+                            <th *ngIf="isshow">Edit</th>
+                            <th *ngIf="isshow">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myTable" *ngFor="let p of post">
+                        <tr>
+                            <td>{{p.subname}}<input type="hidden" #subnameInput value="{{p.subname}}"><input type="hidden" #paperidInput value="{{p.paperid}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
+                            <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(paperidInput.value)">Open</button></td>
+                            <td *ngIf="isshow"><button type="submit" class="btn-success" (click)="edittext(paperidInput.value)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                            <td *ngIf="isshow"><button type="submit" class="btn-danger "  (click)="dlttext(subnameInput.value,examinerInput.value,paperidInput.value)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            
         </div>
-        
     </div>
 </div>

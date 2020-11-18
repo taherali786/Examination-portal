@@ -25,15 +25,19 @@ tfProp;
 tfProperty;
 optionProp;
 saveanswer:any[]=[];
-i=20;
+i;
 tf;
 ft;
 temp;
 examsubject;
 examiner;
 id;
+timersetting;
 timer;
 examinerid;
+wrong;
+passcriteria;
+perquestion;
 @ViewChild('countdown') counter:CountdownComponent;
   constructor(private router:Router,private ds:DataService,private route:ActivatedRoute) { }
  
@@ -46,10 +50,20 @@ examinerid;
     this.ds.jointestdetail({paperid:this.paperid}).subscribe((response)=>{
       if(response.status=="ok"){
          this.paperquestion=response.data[0].paper;
+         //alert(this.paperquestion.length);
         this.examsubject=response.data[0].examsubject;
         this.examiner=response.data[0].examiner;
         this.id=response.data[0].user;
+        this.timersetting=response.data[0].timersetting;
         this.timer=response.data[0].timer;
+        this.passcriteria=response.data[0].passCritertia;
+        this.perquestion=response.data[0].perquestion;
+        if(this.timersetting=="timeoneveryque"){
+          this.timer=response.data[0].timer;
+        } else if(this.timersetting=="timeonwholeses"){
+          this.timer=response.data[0].timer* (60);
+         // alert(this.timer);
+        }
           this.examinerid=response.data[0].userid;
          
          document.getElementById('show').click();
@@ -73,7 +87,7 @@ addon(){
       this.isquestion=true;
       this.question=this.paperquestion[this.c].question;
       this.paperanswer=this.paperquestion[this.c].answer;
-      console.log(this.paperanswer);
+     
        if(this.paperanswer==""){
         this.isoption=false;
         this.isft=true;
@@ -88,7 +102,7 @@ addon(){
       
        }
      
-    }else{ 
+    }else{
       this.isoption=false;
       this.isft=false;
       this.isquestion=false;
@@ -111,18 +125,20 @@ optionadd(title:string){
       id:this.saveanswer.length,
       question:this.question,
       answer:this.paperanswer,
-      useranswer:title,
+      useranswer:title,option:this.paperoption
+      
     })
-    console.log(this.saveanswer);
-    
-    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+   
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
       if(response.status=="ok"){
           this.isoption=false;
           this.isft=false;
           this.isquestion=false;
           this.saveanswer=[];
           document.getElementById('show').click();
+          if(this.timersetting=="timeoneveryque"){
           setTimeout(()=>this.counter.restart());
+          }
       }else{
         alert('something gone wrong');
       }
@@ -133,18 +149,19 @@ optionadd(title:string){
       id:this.saveanswer.length,
       question:this.question,
       answer:this.paperanswer,
-      useranswer:title,
+      useranswer:title,option:this.paperoption
     })
-    console.log(this.saveanswer);
-
-    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),examinerid:this.examinerid,paperid:this.paperid,username:localStorage.getItem('name'),rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+   
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),examinerid:this.examinerid,paperid:this.paperid,username:localStorage.getItem('name'),rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
         this.isquestion=false;
         this.saveanswer=[];
         document.getElementById('show').click();
-        setTimeout(()=>this.counter.restart());
+        if(this.timersetting=="timeoneveryque"){
+          setTimeout(()=>this.counter.restart());
+          }
       }else{
         alert('something gone wrong');
       }
@@ -156,8 +173,7 @@ optionadd(title:string){
 
 tfadd(){
   
-  alert(this.tfProperty);
-  console.log(this.tfProperty);
+  
   if(this.papertf==this.tfProperty){
     // alert("same");
     this.a++;
@@ -168,9 +184,8 @@ tfadd(){
       tf:this.papertf,
       useranswer:this.tfProperty,
     })
-    console.log(this.saveanswer);
-
-    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
@@ -178,7 +193,9 @@ tfadd(){
         this.tfProperty='';
         this.saveanswer=[];
         document.getElementById('show').click();
-        setTimeout(()=>this.counter.restart());
+        if(this.timersetting=="timeoneveryque"){
+          setTimeout(()=>this.counter.restart());
+          }
       }else{
         alert('something gone wrong');
       }
@@ -192,9 +209,8 @@ tfadd(){
       tf:this.papertf,
       useranswer:this.tfProperty,
     })
-    console.log(this.saveanswer);
-
-    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+    
+    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
       if(response.status=="ok"){
         this.isoption=false;
         this.isft=false;
@@ -202,7 +218,9 @@ tfadd(){
         this.tfProperty='';
         this.saveanswer=[];
         document.getElementById('show').click();
-        setTimeout(()=>this.counter.restart());
+        if(this.timersetting=="timeoneveryque"){
+          setTimeout(()=>this.counter.restart());
+          }
       }else{
         alert('something gone wrong');
       }
@@ -213,58 +231,113 @@ tfadd(){
 
 onTimer(e:Event){
     if(e["action"]=="done"){
+    
+      if(this.timersetting=="timeoneveryque"){
 
-   if(this.c<this.paperquestion.length){
-      if(this.paperanswer==""){
-        this.d++;
-   
-      this.saveanswer.push({
-      id:this.saveanswer.length,
-      question:this.question,
-      tf:this.papertf,
-      useranswer:'',
-    })
-    console.log(this.saveanswer);
+        if(this.c<this.paperquestion.length){
+            if(this.paperanswer==""){
+              this.d++;
+        
+            this.saveanswer.push({
+            id:this.saveanswer.length,
+            question:this.question,
+            tf:this.papertf,
+            useranswer:'',
+          })
+         
+          this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
+            if(response.status=="ok"){
+              this.isoption=false;
+              this.isft=false;
+              this.isquestion=false;
+              this.tfProperty='';
+              this.saveanswer=[];
+              document.getElementById('show').click();
+              setTimeout(()=>this.counter.restart());
+                }else{
+                  alert('something gone wrong');
+                }
+             })
+           }
+           else{
+              this.d++;
+              this.saveanswer.push({
+                id:this.saveanswer.length,
+                question:this.question,
+                answer:this.paperanswer,
+                useranswer:'',
+              })
+            
+              this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
+                if(response.status=="ok"){
+                  this.isoption=false;
+                  this.isft=false;
+                  this.isquestion=false;
+                  this.saveanswer=[];
+                  document.getElementById('show').click();
+                  setTimeout(()=>this.counter.restart());
+                }else{
+                  alert('something gone wrong');
+                }
+              })
 
-    this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
-      if(response.status=="ok"){
-        this.isoption=false;
-        this.isft=false;
-        this.isquestion=false;
-        this.tfProperty='';
-        this.saveanswer=[];
-        document.getElementById('show').click();
-        setTimeout(()=>this.counter.restart());
-      }else{
-        alert('something gone wrong');
-      }
-    })
-  }else{
-        this.d++;
-        this.saveanswer.push({
+            }
+        }
+      } else if(this.timersetting=="timeonwholeses"){
+        
+        if(this.c<this.paperquestion.length){
+          if(this.paperanswer==""){
+           // this.d++;
+            this.wrong=this.paperquestion.length-this.c;
+          this.saveanswer.push({
           id:this.saveanswer.length,
           question:this.question,
-          answer:this.paperanswer,
+          tf:this.papertf,
           useranswer:'',
         })
-        console.log(this.saveanswer);
+       
 
-        this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.d,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id')}).subscribe((response)=>{
+        this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.wrong,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
           if(response.status=="ok"){
             this.isoption=false;
             this.isft=false;
             this.isquestion=false;
-            this.saveanswer=[];
-            document.getElementById('show').click();
-            setTimeout(()=>this.counter.restart());
-          }else{
-            alert('something gone wrong');
-          }
-        })
+            this.iscount=false;
+            this.iscountfalse=true;
+            this.router.navigate(['/dashboard2/showresult']);
+              }else{
+                alert('something gone wrong');
+              }
+           })
+         }
+         else{
+           // this.d++;
+           this.wrong=this.paperquestion.length-this.c;
+            this.saveanswer.push({
+              id:this.saveanswer.length,
+              question:this.question,
+              answer:this.paperanswer,
+              useranswer:'',
+            })
+           
+            this.ds.saveanswer({saveans:this.saveanswer,mailid:localStorage.getItem('email'),paperid:this.paperid,username:localStorage.getItem('name'),examinerid:this.examinerid,rightanswer:this.a,wronganswer:this.wrong,examsubject:this.examsubject,examiner:this.examiner,userid:localStorage.getItem('id'),totquestion:this.paperquestion.length,passCriteria:this.passcriteria,perquestion:this.perquestion}).subscribe((response)=>{
+              if(response.status=="ok"){
+                this.isoption=false;
+                this.isft=false;
+                this.isquestion=false;
+                this.iscount=false;
+                this.iscountfalse=true;
+                this.router.navigate(['/dashboard2/showresult']);
+              }else{
+                alert('something gone wrong');
+              }
+            })
 
+          }
+        }
+        //alert(this.paperquestion.length-this.c);
       }
-   }
-  }
+    }
   }
   
 }

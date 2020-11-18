@@ -1,20 +1,23 @@
 .container-fluid{
-    width:100%;
-    height:657px;
+  
     background-image: linear-gradient(#00c3ff,#c0c0aa);
     padding-top: 8%;
     margin-top: -17px;
 }
+.box{
+    padding-bottom: 40px;
+    min-height: 90vh;
+}
 .container-fluid .address{
     margin:0 auto;
     height: 10px;
-    width: 400px;
+    width: 47%;
   padding-bottom: 25px;
   font-weight: 600;
 }
 .container-fluid .rows{
-    width:500px;
-    height: 450px;
+    width:50%;
+   min-height: 50vh;
     background-color: white;
     margin:0 auto;
     border-radius:22px;
@@ -22,18 +25,20 @@
     overflow: hidden;
 }
 .container-fluid .rows .rows1{
-    height: 90%;
+   min-height: 60vh;
+    margin: 0 auto;
     display:grid;
-    grid-template-columns: 480px 480px 480px;
+    grid-template-columns: 100% 100%;
     grid-gap: 2px;
     padding-left:5px;
+   
 }
 .rows .rows1 .column{
     height: 92%;
    position: relative;
     overflow: auto;
-    padding-left: 20%;
-    padding-right: 5%;
+   
+    margin: 0 auto;
 }
 .rows1 .column .heading{
     width:100%;
@@ -41,14 +46,11 @@
     border-radius: 8px;
     padding-left: 2%;
 }
-#savesteptwo{
-    left: 100px;
-}
-#savestepthree{
-    left: 150px;
-}
 .form-group{
     width:300px;
+}
+.center{
+    padding-left: 30%;
 }
 .form-group .btn-savesteptwo{
     padding-left: 50px;
@@ -68,18 +70,38 @@
     margin-left: 30px;
 }
 .rows .headline{
-    width:300px;
+    width:30%;
     height:35px;
-   margin-left: 110px;
+    margin: 0 auto;
    display: grid;
-   grid-template-columns:auto auto auto ;
-   grid-gap:1px;
+   grid-template-columns:auto auto;  
 }
 .headline .one{
-    padding-left: 27px;
+    padding-left: 20%;
+    padding-right: 20%;
     padding-top: 4px;
     margin-top: 3px;
+    margin: 0 auto;
 }
 #one{
 border-bottom: 7px solid gold;
+}
+#centeralised{
+    margin-left: 30%;
+}
+@media (max-width:1010px){
+    .container-fluid .rows{
+        width:100%;
+       height: 95%;
+    }
+    .container-fluid .rows .rows1{
+        min-height: 80vh;
+    }
+    .container-fluid .address{
+        width: 97%;
+        margin-top: -31px;
+    }
+    .box{
+        min-height: 100vh;
+    }
 }

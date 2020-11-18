@@ -1,32 +1,32 @@
 <div class="container-fluid">
-                
+    <div class="box">            
     <!-- <div class="row row1">
         <div class="col-sm-5"></div>
         <div class="col-sm-7 row2"> -->
             <!-- <countdown #countdown [config]="{leftTime:i,format:'mm:ss'}" (event)="onTimer($event)"></countdown> -->
            <div class="address">Dashboard>Add-New-Question</div> 
-            <div class="row1">
+            <div class="row rows">
                 <div class="headline">
                    <div class="one" id="one1">Step1</div>
                    <div class="one" id="two">Step2</div>
                 </div>
-                <div class="rows">
+                <div class="rows1">
                     <div class="column mt-5" id="stepone">
                         <form #f="ngForm">
                             <div class="form-group">
-                                <label for="subname">Subject Id:</label>
+                                <label class="center" for="subname">Subject Id:</label>
                                 <input #subnameref="ngModel" [(ngModel)]="subnameProp" (ngModelChange)="subnameProp=$event.toUpperCase()" type="text" class="form-control" id="subname" placeholder="Enter Subject Name" name="subname" (keyup)="next()">
                                 </div>
                                 <div class="form-group">
-                                <label for="subcode">Subject Code:</label>
+                                <label class="center" for="subcode">Subject Code:</label>
                                 <input #subcoderef="ngModel"  [(ngModel)]="subcodeProp" type="text" class="form-control" id="subcode" placeholder="Enter Subject Code (Optional)" name="subcode">
                                 </div>
                                 <div class="form-group">
-                                <label for="exm">Examiner Name:</label>
-                                <input #examineref="ngModel" [(ngModel)]="examinerProp" (ngModelChange)="examinerProp=$event.toUpperCase()" type="text" class="form-control" id="exm" placeholder="Enter Examiner Name" name="exm" (keyup)="next()">
+                                <label class="center" for="exm">Author Name:</label>
+                                <input #examineref="ngModel" [(ngModel)]="examinerProp" (ngModelChange)="examinerProp=$event.toUpperCase()" type="text" class="form-control" id="exm" placeholder="Enter Author Name" name="exm" (keyup)="next()">
                                 </div>
                         
-                            <button *ngIf="isgood" class="btn btn-primary ml-5 pl-4 pr-4" (click)="savesubjectinfor()">Next</button>
+                            <button *ngIf="isgood" class="btn btn-primary ml-5 pl-4 pr-4" id="centralised" (click)="savesubjectinfor()">Next</button>
                         </form><div id="nextstep" onclick="step1()"></div>
                     </div>
             <!-- <div class="col-sm-2"></div>
@@ -34,7 +34,8 @@
                     <div class="column" id="steptwo">
                         <div class="row rows2">
                             <!-- <div class="col-sm-9 column1"> -->
-                            <div class="column-box">
+                                
+                            <div class="column-box ml-3">
                                 <form #ff="ngForm" class="column-box1">
                                     <div class="row-box">
                                         <!-- <label for="Question">Enter Question Here:</label> -->
@@ -42,17 +43,18 @@
                                     </div>
                                     <div *ngIf="ismcq" class="form1 row-box" id="mcqbox">
                                         <div>
-                                            Answer<input type="text" #ansref="ngModel" [(ngModel)]="ansProp" class="mr-2 col-sm-5 form-inline" name="ansProp">
-                                            <button (click)="add()" class="btn btn-primary" [disabled]="ishide">Add New Field</button>
+                                      
+                                            <label class="form-inline">Answer :&nbsp;<input type="text" #ansref="ngModel" [(ngModel)]="ansProp" class="form-inline" name="ansProp">
+                                            <button (click)="add()" id="newfieldbtn" class="btn btn-primary" [disabled]="ishide">Add New Field</button></label>
                                            
                                         </div> 
                                         <!-- <div class="row rows3"> -->
                                             <div *ngFor='let d of data; let i=index'class="form-inline" >
                                                 <!-- <div class="col-sm-2">                                       -->
-                                                    option {{i+1}}:
+                                                    <label class="form-inline">Option {{i+1}}:
                                                     <!-- <div class="row">
                                                     <div class="col-sm-1"> -->
-                                                    <input class="input" type="text" [(ngModel)]="d.option" name="option_{{i}}">
+                                                    <input class="input" type="text" [(ngModel)]="d.option" name="option_{{i}}"></label>
                                                     <!-- </div>
                                                     </div> -->
                                                 <!-- </div> -->
@@ -72,19 +74,23 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- </div>
-                            <div class="col-sm-3 column2"> -->
-                            <div class="column-box" id="coll">
-                                <label><h6 class="mt-3">Select Question<br> Type</h6></label>
-                                <button id="tf" type="submit" class="btn btn-primary mt-5" (click)="showtruefalse()">T/F</button><br>
-                                <button id="mcq" type="submit" class="btn btn-primary mt-5" (click)="showmcq()">MCQ</button><br> 
-                                             
+                            <div class="column-box ml-3" id="coll">
+                                <label><h6 class="mt-1">Select Question Type</h6></label><br>
+                               
+                                        <button id="tf" type="submit" class="btn btn-primary" (click)="showtruefalse()">T/F</button>&nbsp;&nbsp;
+                                   
+                                        <button id="mcq" type="submit" class="btn btn-primary" (click)="showmcq()">MCQ</button>
+                                     
 
                             </div>
+                            <!-- </div>
+                            <div class="col-sm-3 column2"> -->
+                            
                         </div>
                     </div>
                 </div>
             </div>
+    </div>
             <!-- </div>
         </div>
     </div>

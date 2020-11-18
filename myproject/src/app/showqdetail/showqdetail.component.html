@@ -1,39 +1,53 @@
-<!-- <p>showdetail works!</p>
-{{subname}}<br>
-{{userid}} -->
 <div class="container-fluid">
     <div class="box">
-        <div class="heading">
-            {{examsubject}}&nbsp;paper questions
-        </div>
-        <div class="table-box">
-            <table class="table table-striped box-row" >
-                <thead>
-                <tr>
-                    <th style="text-align: center;">Choose</th>
-                    <th style="text-align: center;">Questions</th>
-                    <th style="text-align: center;">Answer</th>
-                    <!-- <th style="text-align: center;">Edit</th> -->
-                    <!-- <th >Delete</th> -->
-                </tr>
-                </thead>
-                <tbody id="myTable" *ngFor="let p of paperquesid;">
-                <tr>
-                    <td style="text-align: center;"><input type="checkbox" class="form-control-sm" style="width:20px; text-align: center;" name="options" (change)="update($event.target.checked,p)" [checked]="checked(p)"></td>
-                    <td style="text-align: center;">{{p.question}}<input type="hidden" #subnameInput></td>
-                    <td style="text-align: center;">{{p.answer}}{{p.tf}}</td>
-                    <!-- <td style="text-align: center;"><button type="submit" class="btn btn-primary">Edit</button></td> -->
-                    <!-- <td ><button type="submit" class="btn btn-danger ">Delete</button></td> -->
-                </tr>
-                </tbody>
-            </table>
+        <div class="address">Dashboard >Paper</div> 
+        <div class="large-box">
+            <div class="box" id="boxes">
+                <div class="box-grid">
+                
+                        <div class="head">
+                            <div class="heading">
+                                {{examsubject}}&nbsp;paper questions
+                            </div>
+                        </div>
+                </div>
+                <div class="box-grid">
+                    <div class="table-box">
+                        <table class="table table-striped box-row" >
+                            <tbody id="myTable" *ngFor="let p of paperquesid;let i=index;">
+                            <tr>
+                            <td>
+                                <div class="row"  >
+                                    <div class="col-1"></div>
+                                    <div class="col-1"><input type="checkbox" style="text-align:left;" class="form-control-sm" name="options" (change)="update($event.target.checked,p)" [checked]="checked(p)"></div>
+                                    <div class="col-5" style="margin: 0 auto;">Q.{{i+1}}&nbsp;&nbsp;{{p.question}}<input type="hidden" #subnameInput></div>
+                                    </div>
+                            </td>
+                            </tr>
+                            <tr>
+                                <div class="row"  >
+                                <div class="col-5 table-primary" style="border: 1px solid black;margin: 0 auto;" *ngFor="let q of p.option;let j=index;">
+                                <td style="border:0 ;text-align:center;margin: 0 auto; text-align: center;">{{j+1}}.&nbsp;&nbsp;<span style="text-align: center;font-weight: bold; margin: 0 auto ;">{{q.option}}</span></td>
+                                </div>
+                                </div>
+                            </tr>
+                            <tr class="tr table-success">
+                                <td style="text-align: center;">Ans.&nbsp;&nbsp;{{p.answer}}{{p.tf}}</td>
+                            </tr>
+                            <tr><td></td></tr>
+                            </tbody>
+                        </table>
 
+                    </div>
+                </div>
+                <div class="box-grid">
+                    <div class="table-footer">
+                        <button type="submit" class="btn btn-success ml-1 mr-3 mt-2" (click)="addmore()">Add More</button>
+                        <button type="submit" class="btn btn-danger mr-2 mt-2" (click)="dltvalue()">Delete</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="table-footer">
-            <button type="submit" class="btn btn-success pr-5 pl-5 mr-3" (click)="addmore()">Add More</button>
-            <button type="submit" class="btn btn-danger pr-5 pl-5" (click)="dltvalue()">Delete</button>
-        </div>
-
     </div>
-
 </div>
+

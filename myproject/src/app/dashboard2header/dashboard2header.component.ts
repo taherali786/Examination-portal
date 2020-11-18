@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-dashboard2header',
@@ -7,10 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard2header.component.css']
 })
 export class Dashboard2headerComponent implements OnInit {
-
+data:any=123;
+encryted:string;
+secretkey:string='Secret@123';
   constructor(private router:Router) { }
-
+ 
   ngOnInit(): void {
+  
   }
 
   logout()

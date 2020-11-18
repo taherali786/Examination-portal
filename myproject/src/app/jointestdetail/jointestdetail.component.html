@@ -1,62 +1,61 @@
 <div class="container-fluid">
-    <div class="row"><button id="show" (click)="addon()"></button>
-        <div class="paper-box" >
-            <div class="paper">
-               <div class="countdown" *ngIf="iscount"> <countdown #countdown [config]="{leftTime:timer,format:'mm:ss'}" (event)="onTimer($event)" ></countdown></div>
-               <div class="countdown" *ngIf="iscountfalse"><countdown [config]="{format:'mm:ss'}"></countdown> </div>
-               <div class="question" id="q">
-                   <div class="row rows">
-                       <div id="ques" *ngIf="isquestion">
-                          Q.{{c}}&nbsp; {{question}}
+    <div class="box">
+        <div class="row"><button id="show" (click)="addon()"></button>
+            <div class="paper-box" >
+                <div class="paper">
+                <div class="countdown" *ngIf="iscount"> <countdown #countdown [config]="{leftTime:timer,format:'mm:ss'}" (event)="onTimer($event)" ></countdown></div>
+                <div class="countdown" *ngIf="iscountfalse"><countdown [config]="{format:'mm:ss'}"></countdown> </div>
+                <div class="question" id="q">
+                    <div class="row rows">
+                        <div id="ques" *ngIf="isquestion">
+                            Q.{{c}}&nbsp; {{question}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="paper">
-                <div class="question" >
-                    <div class="row rows" *ngIf="isft">
-                        <div class="form">
-                            <!-- <div class="row row-radio"> -->
-                                <div class="col-form">
-                                  <input #tfref="ngModel" [(ngModel)]="tfProperty" type="radio" class="roleradio" value="true" id="role1" placeholder="Enter password" name="tfProperty" required  >
-                                  <label for="role1" class="radio">
-                                    <span class="radio-span">True</span>
-                                  </label>
-                                </div>
-                                <div class="col-form">
-                                  <input #tfref="ngModel" [(ngModel)]="tfProperty" type="radio" class="roleradio" value="false" id="role2" placeholder="Enter password" name="tfProperty" required >
-                                  <label for="role2" class="radio" id="radio"> 
-                                    <span class="radio-span">False</span>
-                                  </label>
-                                 </div>      
+                <div class="paper">
+                    <div class="question" >
+                        <div class="row rows" *ngIf="isft">
+                            <div class="form">
+                                <!-- <div class="row row-radio"> -->
                                 
-                        </div>
-                        <div class="form">
-                            <div>
-                            <button class="btn btn-primary" (click)="tfadd()" style="margin-left: 90px;">Select</button>
+                                    <div class="form-inline form-group" >                                     
+                                        <label class="radio-inline mr-4 "> <input #tfref="ngModel" [(ngModel)]="tfProperty" type="radio" class="roleradio mr-2" value="true" id="role1" name="tfProperty" required  >True</label>
+                                        <label class="radio-inline mr-4"> <input #tfref="ngModel" [(ngModel)]="tfProperty" type="radio" class="roleradio" value="false" id="role2" name="tfProperty" required >False</label>
+                                    </div>
+                                    
+                            </div>
+                            <div class="form">
+                                <div class="form-group mt-1">
+                                <button class="btn btn-primary" (click)="tfadd()">Select</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row rows" *ngIf="isoption">
-                        <div class="form">
-                            <div class="col-form" *ngFor="let p of paperoption; let i=index;">
-                            
-                            <input #optionref type="radio" value="{{p.option}}" class="roleradio" id="role{{i}}" name="role" required (click)="optionadd(optionref.value)">
-                            <label for="role{{i}}" class="radio">
-                            <span class="radio-span">{{p.option}}</span>
-                            </label>
+                        <div class="row rows" *ngIf="isoption">
+                            <div class="form">
+                                <div class="form-inline form-group form-control" *ngFor="let p of paperoption; let i=index;">
 
+                                        <label class="radio-inline"><input #optionref type="radio" value="{{p.option}}" class="roleradio" id="role{{i}}" name="role" required (click)="optionadd(optionref.value)">&nbsp;&nbsp;{{p.option}}</label>
+                                        <!-- <label class="radio-inline mr-4"><input type="radio" id="private" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="private" class="mr-2" checked>private</label>
+                                        <button type="submit" class="btn btn-primary mt-2" (click)="updateprivacy()">Save</button>
+                                    </div> -->
+                                
+                                <!-- <input #optionref type="radio" value="{{p.option}}" class="roleradio" id="role{{i}}" clas="ml-2" name="role" required (click)="optionadd(optionref.value)">
+                                <label for="role{{i}}" class="radio">
+                                <span class="radio-span">{{p.option}}</span>
+                                </label> -->
+
+                                </div>
                             </div>
-                        </div>
-                        
-                    </div>         
-                          
+                            
+                        </div>         
+                            
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div> 
-    
+        </div> 
+    </div>
 </div>
 <!-- <div  *ngFor="let p of paperoption">  
    

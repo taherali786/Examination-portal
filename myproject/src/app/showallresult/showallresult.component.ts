@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-showallresult',
@@ -11,6 +12,9 @@ export class ShowallresultComponent implements OnInit {
 post;
 total;
 rightanswer;
+id;
+obj;
+secretkey:string='Secret@123';
   constructor(private ds:DataService,private router:Router) { }
 
   ngOnInit(): void {
@@ -23,6 +27,8 @@ rightanswer;
     })
   }
   edittext(title:string,title2:string){
-    this.router.navigate(['/dashboard/viewallresult'],{queryParams:{subname:title,examiner:title2}});
+    var object={subname:title,examiner:title2};
+    var x=CryptoJS.AES.encrypt(JSON.stringify(object),this.secretkey).toString();
+    this.router.navigate(['/dashboard/viewallresult'],{queryParams:{x}});
   }
 }

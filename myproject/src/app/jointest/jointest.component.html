@@ -1,32 +1,86 @@
 <div class="container-fluid">
-    <div class="row rows">
-        <div class="col-sm-12 column">
-            <div class="heading">ONGOING TESTS</div>
-                    <div class="search">
-                    <input class="form-control mb-4" id="tableSearch" type="text"
-                            placeholder="Type something to search list items">
+    <div class="box">
+        <div class="address">Dashboard>Join-New-Test</div> 
+        <div class="row rows">
+            <div class="col-sm-12 column">
+                <div class="heading">ONGOING TESTS</div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-9">
+                            <div class="search">
+                            <input class="form-control mb-4" id="tableSearch" type="text"
+                                    placeholder="Type something to search list items">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="search">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Test ID</button>
+                            </div>
+                        </div>
                     </div>
-            <div class="table-responsive" >
-                <table class="table table-striped" >
-                    <thead>
-                    <tr>
-                        <th>Subject Name</th>
-                        <th>Examiner Name</th>
-                        <th *ngIf="ishide2">Choose Question</th>
-                        <th *ngIf="isshow">Click TO Start Test</th>
-                    </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    <tr *ngFor="let p of post3">
-                        <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p._id}}"></td>
-                        <td>{{p.examiner}}</td>
-                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value)">Go on</button></td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive" >
+                    <table class="table table-striped" >
+                        <thead>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Examiner Name</th>
+                            <th *ngIf="ishide2">Choose Question</th>
+                            <th *ngIf="isshow">Click TO Start Test</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myTable">
+                        <tr *ngFor="let p of post3">
+                            <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p._id}}"></td>
+                            <td>{{p.examiner}}</td>
+                            <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value)">Open</button></td>
+                            <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value)">Go on</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h3>Join Test Using Test ID</h3>
+                    <!-- <button class="btn log-btn" id="btn-color" onclick="teacherfunc()">Teacher</button>
+                    <button class="btn log-btn" id="btn-color1" onclick="studentfunc()">Student</button> -->
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body ">
+                <div class="form-body">
+                    <form action="/action_page.php" class="was-validated "  #f="ngForm">
+                        <div class="form-group">
+                        <label for="testid">Test ID:</label>
+                        <input #idref="ngModel"  [(ngModel)]="idProp" type="text" class="form-control" id="testid" placeholder="Enter Test ID" name="email" required (keyup)="next()">
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                        <label for="pwd"> Test Password:</label>
+                        <input #passref="ngModel"  [(ngModel)]="passProp" type="password" class="form-control" id="pwd" placeholder="Enter Test Password" name="password" required (keyup)="next()">
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" (click)="idpass()" [disabled]="idpasscon">Enter</button>
+                    </form>
+                    
+                    </div>   
+                </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            
             </div>
         </div>
-        
     </div>
-</div>

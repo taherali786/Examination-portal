@@ -1,19 +1,21 @@
 
 .container-fluid{
     width:100%;
-    height:657px;
     background-image: linear-gradient(#00c3ff,#c0c0aa);
     padding-top: 8%;
     margin-top: -17px;
 }
+.box{
+    padding-bottom: 50px;
+    
+}
 .container-fluid .row{
-    height:500px;
-    width:460px;
+    min-height: 80vh;
+    width:50%;
     margin: 0 auto;
     border-radius: 15px;
     box-shadow: 0px 10px 10px 10px grey;
     background-color:palegreen;
-    /* overflow: auto; */
 }
 .container-fluid .row .paper-box{
     width: 100%;
@@ -21,14 +23,10 @@
    display: grid;
    grid-template-rows: 50% 50%;
    grid-gap: 5px;
-
-   /* overflow: auto; */
 }
 .paper-box .paper{
     padding-left: 2%;
     padding-right: 2%;
-   /* padding-top: 25px; */
-    /* background-color: yellow; */
     overflow: auto;
     
 }
@@ -36,16 +34,14 @@
     width:90%;
     height: 85%;
    margin: 0 auto;
-   /* text-align: center; */
    border-radius: 10px;
     border: 2px solid black;
     font-size: 20px;
     font-weight: 500;
     overflow: auto;
-    /* background-color: tomato; */
     background-color: lightslategray;
     box-sizing: border-box;
-    
+
 }
 .paper-box .paper .countdown{
    text-align: center;
@@ -65,42 +61,24 @@
    height: 0px;
    background-color: blue;
 }
-.paper .question .row .form{
+.paper .question .rows .form{
     width:80%;
     box-sizing: border-box;
-    /* margin-top: 20px; */
     text-align: center;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 5px;
-    
+    display: grid; 
 }
-
-
+.question .rows .form .form-group{
+    margin: 0 auto;
+}
 #ques{
 margin-top: 50px;
-
 }
-input[type="radio"]{
-    -webkit-appearance: none;
-  }
-  .radio{
-      margin-left: 5px;
-      width:100%;
-      line-height: 30px;
-     border: 2px solid grey;
-     box-sizing: border-box;
-    border-radius:10px;
-    background: #fff;
-    text-align: center;
-    font-size: smaller;
-  }
- 
-  input[type="radio"]:checked + .radio{
-   /* background-image: linear-gradient(#de6161,#2657eb) ; */
-   border:5px green solid;
-  
-  }
   #show{
       display: none;
   }
+  @media (max-width:1010px){
+    .container-fluid .row{
+        width:100%;
+       height: 95%;
+    }
+}

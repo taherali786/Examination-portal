@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-showqbankdetail',
@@ -19,14 +20,19 @@ select:any[]=[];
 examiner;
 uid;
 examsubject;
+secretkey:string='Secret@123';
+obj;
   constructor(private route:ActivatedRoute,private router:Router,private ds:DataService) { }
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe((d)=>{
-      this.id=d.get("id");
-    })
 
-    this.ds.showqbankdetail({id:this.id}).subscribe((response)=>{
+    this.route.queryParamMap.subscribe((d)=>{
+      this.id=d.get("x");
+      let bytes = CryptoJS.AES.decrypt(this.id,this.secretkey);
+      this.obj =JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+     
+    })
+    this.ds.showqbankdetail({id:this.obj.id}).subscribe((response)=>{
 
       if(response.status=="ok"){
         this.quesid=response.data[0].questionid;

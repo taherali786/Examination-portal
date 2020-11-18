@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-showpaper',
@@ -14,6 +15,7 @@ export class ShowpaperComponent implements OnInit {
    post;
    name=localStorage.getItem('name');
    number;
+   secretkey:string='Secret@123';
   constructor(private router:Router,private route:ActivatedRoute,private ds:DataService) { }
 
   ngOnInit(): void {
@@ -52,33 +54,34 @@ gotonew()
   this.router.navigate(['/dashboard/addnewque']);
 }
 
-showtext(title:string,title2:string)
+showtext(title:string)
 {
     if(title!=""){
-     this.router.navigate(['/dashboard/showdetail'],{queryParams:{examsubject:title,examiner:title2}});
+      var object={paperid:title};
+      var z=CryptoJS.AES.encrypt(JSON.stringify(object),this.secretkey).toString();
+      this.router.navigate(['/dashboard/showdetail'],{queryParams:{z}});
     }else{
       alert("error");
     }
 }
  
-edittext(title:string,title2:string)
+edittext(title:string)
 {
   // console.log(title);
   // console.log(title2);
-    if(title!="" && title2!=""){
+    if(title!=""){
       // alert(title);
-      console.log(title);
-      console.log(title2);
-     this.router.navigate(['/dashboard/showpaperdetail'],{queryParams:{examsubject:title,examiner:title2}});
+      var object={paperid:title};
+      var x=CryptoJS.AES.encrypt(JSON.stringify(object),this.secretkey).toString();
+      this.router.navigate(['/dashboard/showpaperdetail'],{queryParams:{x}});
     }else{
       alert("error");
     }
 }
 
 dlttext(title:string,title2:string){
-  console.log(title);
-  console.log(title2);
-  this.ds.dltext({examsubject:title,examiner:title2,userid:localStorage.getItem('id')})
+ 
+  this.ds.dltext({id:title,paperid:title2})
   .subscribe((response)=>{
     if(response.status=="ok"){
         alert(response.data);

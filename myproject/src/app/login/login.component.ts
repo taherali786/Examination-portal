@@ -14,13 +14,18 @@ export class LoginComponent implements OnInit {
   constructor(private router:Router, private ds:DataService) { }
 
   ngOnInit(): void {
+    // var emailId='chakkiwala52@gmail.com';
+    // //var username=emailId.substring(0,emailId.lastIndexOf('@'));
+    // var address=emailId.substring(emailId.lastIndexOf('@') +1);
+    // //alert(username);
+    // alert(address);
     document.getElementById('clickevent2').click();
   }
 
   signin()
   {
    
-    this.ds.signin({email:this.emailProp})
+    this.ds.signin({email:this.emailProp,password:this.passwordProp})
     .subscribe((response)=>{
       if(response.status=="ok"){
 
@@ -44,7 +49,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem("name",response.data[0].name);
         localStorage.setItem("email",response.data[0].email);
         localStorage.setItem("role",response.data[0].role);
-        alert(localStorage.getItem('id')+localStorage.getItem('name')+localStorage.getItem('email')+localStorage.getItem('role'));
+       // alert(localStorage.getItem('id')+localStorage.getItem('name')+localStorage.getItem('email')+localStorage.getItem('role'));
         alert("you are login");
         this.router.navigate(['/dashboard']);
       }else{
@@ -58,7 +63,7 @@ export class LoginComponent implements OnInit {
       
   
       }else{
-        alert(response.err);
+        alert(response.data);
       }
     })
    

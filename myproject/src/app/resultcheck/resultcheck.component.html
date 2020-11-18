@@ -1,0 +1,63 @@
+
+<div class="container-fluid">
+    <div class="main-box">
+        <div class="address">Dashboard>Paper>{{subname}}</div> 
+        <div class="large-box">
+            <div class="box" id="boxes">
+                <div class="box-grid">
+                
+                        <div class="head">
+                            <div class="heading">
+                                {{subname}} Paper
+                            </div>
+                        </div>
+                </div>
+                <div class="box-grid">
+                    <div class="table-box">
+                        <table class="table table-striped box-row">
+                            <!-- <thead>
+                            <tr>
+                            
+                                <th >Option</th>
+                                <th>Answer</th>
+                            </tr>
+                            </thead> -->
+                            <tbody id="myTable" *ngFor="let p of quesid;let i=index;">
+                            <tr class="tr">
+                                <td>Q.{{i+1}}&nbsp;&nbsp;{{p.question}}</td>
+                            </tr>
+                        
+                        <tr *ngIf="p.tf=='true' || p.tf=='false
+                        '">
+                                <div class="row"  >
+                                    <div  class="col-5 table-primary"[ngClass]="(p.useranswer=='true')?(p.useranswer==p.tf)?'col-5 table-success':'col-5 table-danger':'col-5 table-primary'"  style="border: 1px solid black;margin: 0 auto;">
+                                        <td style="border:0 ;text-align:center;margin: 0 auto; text-align: center;">true</td>
+                                    </div>
+                                    <div class="col-5 table-primary" [ngClass]="(p.useranswer=='false')?(p.useranswer==p.tf)?'col-5 table-success':'col-5 table-danger':'col-5 table-primary'" style="border: 1px solid black;margin: 0 auto;">
+                                        <td style="border:0 ;text-align:center;margin: 0 auto; text-align: center;">false</td>
+                                    </div>
+                                </div>
+                        </tr>
+                        
+                            <tr>
+                                <div class="row"  >
+                                <div class="col-5 table-primary" [ngClass]="(q.option==p.useranswer)?(p.useranswer==p.answer)?'col-5 table-success':'col-5 table-danger':'col-5 table-primary'"  style="border: 1px solid black;margin: 0 auto;" *ngFor="let q of p.option;let j=index;">
+                                <td style="border:0 ;text-align:center;margin: 0 auto; text-align: center;">{{j+1}}.&nbsp;&nbsp;{{q.option}}</td>
+                                </div>
+                                </div>
+                            </tr>
+                                                    
+                                                
+                            <tr class="tr table-success">
+                                <td>Ans.&nbsp;&nbsp;&nbsp;&nbsp;{{p.answer}}{{p.tf}}</td>
+                            </tr>
+                            <tr><td></td></tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

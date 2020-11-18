@@ -1,34 +1,36 @@
 
 <div class="container-fluid">
-    <div class="address">Dashboard > View-All-Result</div> 
-    <div class="box">
-        <div class="heading">
-            {{examsubject}} Result
-        </div>
-        <div class="search">
-            <input class="form-control mb-4" id="tableSearch" type="text"
-                    placeholder="Type something to search list items">
-         </div>
-        <div class="table-box">
-            <table class="table table-striped box-row" >
-                <thead>
-                <tr>
-                    <th style="text-align: center;" >Student</th>
-                    <th style="text-align: center;">Email-id</th>
-                    <th style="text-align: center;">Total Q.</th>
-                    <th style="text-align: center;">Right Ans.</th>
-                </tr>
-                </thead>
-                <tbody id="myTable" *ngFor="let p of quesid;">
-                <tr>
-                    <td style="text-align: center;">{{p.username}}</td>
-                    <td style="text-align: center;">{{p.mailid}}</td>
-                    <td style="text-align: center;">{{p.rightanswer+p.wronganswer}}</td>
-                    <td style="text-align: center;">{{p.rightanswer}}</td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="main-box">
+        <div class="address">Dashboard > View-All-Result</div> 
+        <div class="large-box">
+            <div class="box">
+                <div class="heading">
+                    {{examsubject}} Result
+                </div>
+                <div class="search">
+                    <input class="form-control mb-4" id="tableSearch" type="text"
+                            placeholder="Type something to search list items">
+                </div>
+                <div class="table-box">
+                    <table class="table table-striped box-row" >
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;" >Student</th>
+                            <th style="text-align: center;">Email-id</th>                  
+                            <th style="text-align: center;">Right Ans.</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myTable" *ngFor="let p of quesid;">
+                        <tr>
+                            <td style="text-align: center;">{{p.username}}</td>
+                            <td style="text-align: center;">{{p.mailid}}</td>
+                            <td style="text-align: center;">{{p.rightanswer}}/{{p.totquestion}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
 
+                </div>
+            </div>
         </div>
     </div>
 

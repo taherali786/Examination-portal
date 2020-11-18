@@ -1,40 +1,142 @@
-<!-- <p>showdetail works!</p>
-{{subname}}<br>
-{{userid}} -->
+
 <div class="container-fluid">
     <div class="address">Dashboard >Paper</div> 
-    <div class="box">
-        <div class="heading">
-            {{examsubject}}&nbsp;paper questions
-        </div>
-        <div class="table-box">
-            <table class="table table-striped box-row" >
-                <thead>
-                <tr>
-                    <th style="text-align: center;">Choose</th>
-                    <th style="text-align: center;">Questions</th>
-                    <th style="text-align: center;">Answer</th>
-                    <!-- <th style="text-align: center;">Edit</th> -->
-                    <!-- <th >Delete</th> -->
-                </tr>
-                </thead>
-                <tbody id="myTable" *ngFor="let p of paperquesid;">
-                <tr>
-                    <td style="text-align: center;"><input type="checkbox" class="form-control-sm" style="width:20px; text-align: center;" name="options" (change)="update($event.target.checked,p)" [checked]="checked(p)"></td>
-                    <td style="text-align: center;">{{p.question}}<input type="hidden" #subnameInput></td>
-                    <td style="text-align: center;">{{p.answer}}{{p.tf}}</td>
-                    <!-- <td style="text-align: center;"><button type="submit" class="btn btn-primary">Edit</button></td> -->
-                    <!-- <td ><button type="submit" class="btn btn-danger ">Delete</button></td> -->
-                </tr>
-                </tbody>
-            </table>
+    <div class="large-box">
+        <div class="box" id="boxes">
+            <div class="box-grid">
+              
+                    <div class="head">
+                        <div class="heading">
+                            {{examsubject}}&nbsp;paper 
+                           
+                        </div>
+                        <div class="heading mt-2"> 
+                            <input type="checkbox" id="check"  name="checkProp" (click)="checking($event.target.checked)">
+                            <label for="check">
+                                <i class="fa fa-sliders" id="btn"></i>
+                                <!-- <i class="fa fa-times" id="cancel"></i> -->
+                            </label>
+                        </div>
+                    </div>
+                       
+                 
+            </div>
+            <div class="box-grid">
+                <div class="table-box">
+                    <table class="table table-striped box-row" >
+                        <thead>
+                        <tr>
+                            <th style="text-align: center;">Choose</th>
+                            <th style="text-align: center;">Questions</th>
+                            <th style="text-align: center;">Answer</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myTable" *ngFor="let p of paperquesid;let i=index;">
+                        <tr>
+                            <td style="text-align: center;"><input type="checkbox" class="form-control-sm" style="width:20px; text-align: center;" name="options" (change)="update($event.target.checked,p)" [checked]="checked(p)"></td>
+                            <td>Q.{{i+1}}&nbsp;&nbsp;{{p.question}}</td>
+                            <td style="text-align: center;">{{p.answer}}{{p.tf}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
 
         </div>
-        <div class="table-footer">
-            <button type="submit" class="btn btn-success pr-5 pl-5 mr-3 mt-2" (click)="addmore()">Add More</button>
-            <button type="submit" class="btn btn-danger pr-5 pl-5 mr-3 mt-2" (click)="dltvalue()">Delete</button>
-        </div>
+        <div class="second-box" id="second" >
+            <div class="second2-box">
+                <div class="second1">
+                    <input type="checkbox" id="check"  name="checkProp" (click)="checking($event.target.checked)">
+                        <label for="check">
+                                      
+                            <i class="fa fa-times" id="cancel"></i>
+                    </label>
+                </div>
+                <div class="second2 pt-2"id="formid">
+                        <form class="pt-2" >
+                           
+                                <label for="email" class="headings">PRIVACY SETTTING  <span style="color: red;">*</span></label>
+                                <div class="form-inline form-group">                                     
+                                    <label class="radio-inline mr-4 "><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="public" class="mr-2" [checked]="ifispublic" (click)="public()">public</label>
+                                    <label class="radio-inline mr-4"><input type="radio" name="privacyProp" #privacyref="ngModel" [(ngModel)]="privacyProp" value="private" class="mr-2" (click)="private()"  [checked]="ifisprivate">private</label>
+                                </div>
+                                <div class="form-inline form-group"  *ngIf="isprivate">                                     
+                                    <label class="radio-inline mr-4 "><input type="radio" name="privacy2Prop" #privacy2ref="ngModel" [(ngModel)]="privacy2Prop" value="private" class="mr-2" [checked]="ifisprivate2" (click)="private2()">private</label>
+                                    <label class="radio-inline mr-4"><input type="radio" name="privacy2Prop" #privacy2ref="ngModel" [(ngModel)]="privacy2Prop" value="idpass" class="mr-2" (click)="idpass()" [checked]="ifisidpass">ID & PASS</label>
+                                </div>
+                                <div class="row form-inline"  *ngIf="isidpass">
+                                    <div class="col ml-1">
+                                    <label for="email">ID:</label>
+                                    <input type="text" id="email" name="idProp" #privacyref="ngModel" [(ngModel)]="idProp" disabled>
+                                    </div>
+                                    <div class="col">
+                                    <label for="pwd">Password:</label>
+                                    <input type="text"  id="pwd" name="passProp" #privacyref="ngModel" [(ngModel)]="passProp">
+                                    </div>
+                                </div>
+
+                            <label for="email" class="headings mt-1">TIMER SETTTING  <span style="color: red;">*</span></label>
+                                <div class="form-inline form-group">                                     
+                                    <label class="radio-inline mr-2"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeoneveryque" class="mr-2" (click)="timer()" [checked]="ifisevery">Every Question</label>
+                                    <label class="radio-inline"><input type="radio" name="timerProp" #timerref="ngModel" [(ngModel)]="timerProp" value="timeonwholeses" class="mr-2" (click)="timers()" [checked]="ifiswhole">Whole Session</label>
+                                </div>
+                                <div class="form-group form-inline" *ngIf="istimer">
+                                    <label for="sel1">Select time:</label>
+                                    <select class="form-control" id="sel1" name="selecttimerProp" #selecttimerref="ngModel" [(ngModel)]="selecttimerProp">
+                                    <option value="15">15s</option>
+                                    <option value="20">20s</option>
+                                    <option value="25">25s</option>
+                                    <option value="30">30s</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" *ngIf="istimers">
+                                    <label for="time">Select Time:</label>
+                                    <input name="selecttimerProp" #selecttimerref="ngModel" [(ngModel)]="selecttimerProp" type="text" class="form-control" id="time" placeholder="Enter Timer in Minute">
+                                </div>
+
+                            <label for="email" class="headings mt-1">SCHEDULE SETTTING  <span style="color: red;">*</span></label>
+                                <div class="form-inline form-group">                                     
+                                    <label class="radio-inline mr-4 "><input type="radio" name="scheduleProp" #scheduleref="ngModel" [(ngModel)]="scheduleProp" value="live now" class="mr-2" (click)="livenowsetting()" [checked]="iflivenow">Live Now </label>
+                                    <label class="radio-inline mr-4"><input type="radio"  name="scheduleProp"  #scheduleref="ngModel"  [(ngModel)]="scheduleProp" value="schedule" class="mr-2" (click)="schedulesetting()" [checked]="ifschedule">Schedule</label>
+                                </div>
+                                
+                                <div class="form-inline form-group" *ngIf="ifisschedule">
+                                    From:&nbsp;{{from}}&nbsp;&nbsp;&nbsp;To:&nbsp;{{to}}
+                                </div>
+                                <div class="form-group" id="scheduling" *ngIf="ifisschedule">
+                                    <div class="row">
+                                        <label for="from">From:&nbsp;</label>
+                                        <input name="datetimerProp" #datetimerref="ngModel" [(ngModel)]="fromdatetimerProp"  type="datetime-local" class="form-control" id="from">
+                                    </div>
+                                    <div class="row mt-1">
+                                         <label for="to">To:&nbsp;</label>
+                                        <input name="datetimerProp" #datetimerref="ngModel" [(ngModel)]="todatetimerProp" type="datetime-local" class="form-control" id="to">
+                                    </div>
+                                </div>
+                            
+                             <label for="email" class="headings mt-1">RESULT SETTTING <span style="color: red;">*</span></label>
+                             <div class=" form-inline form-group row">
+                                <!-- <div class="col-sm-7"> -->
+                                    <label for="pq">Per Q. Mark&nbsp;&nbsp;&nbsp;</label>
+                                     <input type="text" name="pqmark" #pqmarkref="ngModel" [(ngModel)]="pqmark" class="form-control" id="pq">
+                                <!-- </div> -->
+                            </div>
+                            <div class=" form-inline form-group row mt-1">
+                                <label for="passCriteria">Pass Criteria&nbsp;&nbsp;&nbsp;</label>
+                                <input type="text" name="passCriteria" #passCriteriaref="ngModel" [(ngModel)]="passCriteriaProp" class="form-control" id="passCriteria" placeholder="Enter Passing Percentage">
+                            </div>
+                            <label for="email" class="headings mt-1">Student SETTTING</label>
+                            <div class=" form-inline form-group row">
+                                <label for="studentSetting">Mail ID&nbsp;&nbsp;&nbsp;</label>
+                                <input type="text" name="studentSettingProp" #pqmarkref="ngModel" [(ngModel)]="studentSettingProp" class="form-control" id="studentSetting" placeholder="after @ address ">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mt-2 mb-2" (click)="savepaperlast()">Done</button>
+                        </form>
+                    </div>
+                </div>
+             </div>
 
     </div>
-
 </div>

@@ -58,3 +58,8 @@
       transform: translateY(0px);
     }
   }
+  @media (max-width:800px){
+    label{
+      display: table-cell;
+    }
+  }

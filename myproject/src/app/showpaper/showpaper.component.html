@@ -46,10 +46,10 @@
                     </thead>
                     <tbody id="myTable" *ngFor="let p of post">
                     <tr>
-                        <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p.examsubject}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
-                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(subnameInput.value,examinerInput.value)">Open</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value,examinerInput.value)">Edit</button></td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-danger" (click)="dlttext(subnameInput.value,examinerInput.value)">Delete</button></td>
+                        <td>{{p.subname}}<input type="hidden" #idInput value="{{p._id}}"><input type="hidden" #paperInput value="{{p.paperid}}"><input type="hidden" #examinerInput value="{{p.examiner}}"></td>
+                        <td *ngIf="ishide2"><button class="btn btn-primary" (click)="showtext(paperInput.value)">Open</button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn-success "  (click)="edittext(paperInput.value)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+                        <td *ngIf="isshow"><button type="submit" class="btn-danger" (click)="dlttext(idInput.value,paperInput.value)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
                     </tr>
                     </tbody>
                 </table>

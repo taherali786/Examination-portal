@@ -18,8 +18,8 @@
 }
 .container-fluid .large-box{
     width:90%;
-    overflow: hidden;
     margin:0 auto;
+   
 }
 .container-fluid .large-box .box{
     width: 100%;
@@ -66,13 +66,14 @@
 }
 @media (max-width:800px){
     .container-fluid .large-box{
-       min-width: 98vw;
-       margin-left: -10px;
-    }
-    .container-fluid .large-box .box{
-        min-height: 80vh;
-    }
-    .container-fluid .address{
-        width:425px;
-    }
+        min-width: 98vw;
+        margin-left: -10px;
+     }
+     .container-fluid .large-box .box{
+         min-height: 80vh;
+     }
+     .container-fluid .address{
+         width:425px;
+         margin-left: -10px;
+     }
 }

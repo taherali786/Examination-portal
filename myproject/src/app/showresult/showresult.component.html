@@ -1,34 +1,35 @@
 <div class="container-fluid">
-    <div class="row rows">
-        <div class="col-sm-12 column">
-            <div class="heading">RESULT</div>
-                    <div class="search">
-                    <input class="form-control mb-4" id="tableSearch" type="text"
-                            placeholder="Type something to search list items">
-                    </div>
-            <div class="table-responsive" >
-                <table class="table table-striped" >
-                    <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Examiner</th>
-                         <th>All Q.</th>
-                         <th>Right Ans.</th>
-                        <th *ngIf="isshow">Result</th>
-                    </tr>
-                    </thead>
-                    <tbody id="myTable">
-                    <tr *ngFor="let p of post">
-                        <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p._id}}"></td>
-                        <td>{{p.examiner}}</td>
-                        <td>{{p.rightanswer+p.wronganswer}}</td>
-                        <td>{{p.rightanswer}}</td>
-                        <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value)">View</button></td>
-                    </tr>
-                    </tbody>
-                </table>
+    <div class="box">
+        <div class="address">Dashboard>Show-Result</div> 
+        <div class="row rows">
+            <div class="col-sm-12 column">
+                <div class="heading">RESULT</div>
+                        <div class="search">
+                        <input class="form-control mb-4" id="tableSearch" type="text"
+                                placeholder="Type something to search list items">
+                        </div>
+                <div class="table-responsive" >
+                    <table class="table table-striped" >
+                        <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Examiner</th>
+                            <th>Right Ans.</th>
+                            <th *ngIf="isshow">Result</th>
+                        </tr>
+                        </thead>
+                        <tbody id="myTable">
+                        <tr *ngFor="let p of post">
+                            <td>{{p.examsubject}}<input type="hidden" #subnameInput value="{{p._id}}"><input type="hidden" #paperidInput value="{{p.paperid}}"></td>
+                            <td>{{p.examiner}}</td>
+                            <td>{{p.rightanswer}}/{{p.totquestion}}</td>
+                            <td *ngIf="isshow"><button type="submit" class="btn btn-success"  (click)="edittext(subnameInput.value,paperidInput.value)">View</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            
         </div>
-        
     </div>
 </div>

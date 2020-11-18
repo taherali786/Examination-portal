@@ -11,6 +11,7 @@ export class DashboardheaderComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    //alert(Math.floor(Math.random()*10000000000+1));
   }
 
   logout()
